@@ -67,17 +67,40 @@ abstract class TestCase extends BaseTestCase
 
     /**
      * Make ajax POST request
+     *
+     * @param  string  $uri
+     * @param  array  $data
+     * @param  array  $headers
+     * @param  boolean  $json
+     * @return \Illuminate\Foundation\Testing\TestResponse
      */
-    protected function ajaxPost($uri, array $data = [])
+    protected function ajaxPost($uri, array $data = [], $json = false)
     {
-        return $this->post($uri, $data, array('HTTP_X-Requested-With' => 'XMLHttpRequest'));
+        switch ($json) {
+            case true:
+                return $this->postJson($uri, $data, array('HTTP_X-Requested-With' => 'XMLHttpRequest'));
+                break;
+            default:
+                return $this->post($uri, $data, array('HTTP_X-Requested-With' => 'XMLHttpRequest'));
+        }
     }
 
     /**
      * Make ajax GET request
+     *
+     * @param  string  $uri
+     * @param  array  $data
+     * @param  boolean  $json
+     * @return \Illuminate\Foundation\Testing\TestResponse
      */
-    protected function ajaxGet($uri, array $data = [])
+    protected function ajaxGet($uri, array $data = [], $json = false)
     {
-        return $this->get($uri, array('HTTP_X-Requested-With' => 'XMLHttpRequest'));
+        switch ($json) {
+            case true:
+                return $this->getJson($uri, array('HTTP_X-Requested-With' => 'XMLHttpRequest'));
+                break;
+            default:
+                return $this->get($uri, array('HTTP_X-Requested-With' => 'XMLHttpRequest'));
+        }
     }
 }

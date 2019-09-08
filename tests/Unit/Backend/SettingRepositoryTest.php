@@ -30,7 +30,9 @@ class SettingRepositoryTest extends TestCase
     protected function getValidSettingData($settingData = [])
     {
         return array_merge([
-            'title' => 'Title',
+            'key' => 'key',
+            'value' => 'value',
+            'exposed' => true,
         ], $settingData);
     }
 
@@ -89,10 +91,12 @@ class SettingRepositoryTest extends TestCase
         $setting = factory(Setting::class)->create();
 
         $this->settingRepository->update($setting, $this->getValidSettingData([
-            'title' => 'updated',
+            'key' => 'updated',
+            'value' => 'value',
+            'exposed' => true,
         ]));
 
-        $this->assertSame('updated', $setting->fresh()->title);
+        $this->assertSame('updated', $setting->fresh()->key);
 
         Event::assertDispatched(SettingUpdated::class);
     }

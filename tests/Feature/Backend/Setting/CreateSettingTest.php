@@ -30,7 +30,7 @@ class CreateSettingTest extends TestCase
 
         $response = $this->post('/admin/settings/store', []);
 
-        $response->assertSessionHasErrors(['title']);
+        $response->assertSessionHasErrors(['key','value','exposed']);
     }
 
     /** @test */
@@ -44,13 +44,15 @@ class CreateSettingTest extends TestCase
         Model::setEventDispatcher($initialDispatcher);
 
         $response = $this->post('/admin/settings/store', [
-            'title' => 'John',
+            'key' => 'John',
+            'value' => 'John text',
+            'exposed' => true,
         ]);
 
         $this->assertDatabaseHas(
             'settings',
             [
-                'title' => 'John',
+                'key' => 'John',
             ]
         );
 

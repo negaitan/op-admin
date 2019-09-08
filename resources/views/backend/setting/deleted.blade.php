@@ -24,26 +24,7 @@
         <div class="row mt-4">
             <div class="col">
                 <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>@lang('backend_settings.table.title')</th>
-                            <th>@lang('backend_settings.table.created')</th>
-                            <th>@lang('backend_settings.table.deleted')</th>
-                            <th>@lang('labels.general.actions')</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($settings as $setting)
-                            <tr>
-                                <td class="align-middle"><a href="/admin/settings/{{ $setting->id }}">{{ $setting->title }}</a></td>
-                                <td class="align-middle">{!! $setting->created_at !!}</td>
-                                <td class="align-middle">{{ $setting->deleted_at->diffForHumans() }}</td>
-                                <td class="align-middle">{!! $setting->trashed_buttons !!}</td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                    @include('backend.setting.includes.table')
                 </div>
             </div><!--col-->
         </div><!--row-->

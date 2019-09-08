@@ -27,8 +27,11 @@ class UpdateSettingRequest extends FormRequest
      */
     public function rules()
     {
+        $setting_id = request()->route()->parameters['setting']->id; // admin/settings/2/update  0/1/2/3
         return [
-            'title'     => ['required', 'max:191'],
+            'key'     => ['required', 'max:191', 'unique:settings,key,'.$setting_id],
+            'value'     => ['required', 'string'],
+            'exposed'     => ['required', 'boolean'],
         ];
     }
 
@@ -40,8 +43,8 @@ class UpdateSettingRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required'    => 'The :attribute field is required.',
-            'title.max'         => 'The :attribute field must have less than :max characters',
+            'key.required'    => 'The :attribute field is required.',
+            'key.max'         => 'The :attribute field must have less than :max characters',
         ];
     }
 }

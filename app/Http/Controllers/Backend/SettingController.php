@@ -69,7 +69,9 @@ class SettingController extends Controller
     public function store(StoreSettingRequest $request)
     {
         $this->settingRepository->create($request->only(
-            'title'
+            'key',
+            'value',
+            'exposed'
         ));
 
         // Fire create event (SettingCreated)
@@ -118,7 +120,9 @@ class SettingController extends Controller
     public function update(UpdateSettingRequest $request, Setting $setting)
     {
         $this->settingRepository->update($setting, $request->only(
-            'title'
+            'key',
+            'value',
+            'exposed'
         ));
 
         // Fire update event (SettingUpdated)

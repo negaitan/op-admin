@@ -28,7 +28,9 @@ class StoreSettingRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'     => ['required', 'max:191'],
+            'key'     => ['required', 'max:191', 'unique:settings,key'],
+            'value'     => ['required', 'string'],
+            'exposed'     => ['required', 'boolean'],
         ];
     }
 
@@ -40,8 +42,8 @@ class StoreSettingRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required'    => 'The :attribute field is required.',
-            'title.max'         => 'The :attribute field must have less than :max characters',
+            'key.required'    => 'The :attribute field is required.',
+            'key.max'         => 'The :attribute field must have less than :max characters',
         ];
     }
 }

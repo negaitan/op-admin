@@ -33,8 +33,16 @@
                             <div class="table-responsive">
                                 <table class="table table-hover">
                                     <tr>
-                                        <th>@lang('backend_settings.tabs.content.overview.title')</th>
-                                        <td>{{ $setting->title }}</td>
+                                        <th>@lang('backend_settings.tabs.content.overview.key')</th>
+                                        <td>{{ $setting->key }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('backend_settings.tabs.content.overview.value')</th>
+                                        <td>{{ $setting->value }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('backend_settings.tabs.content.overview.exposed')</th>
+                                        <td><span class="badge badge-{{ $setting->exposed ? 'success' : 'danger' }}">{{ $setting->exposed ? __('Active') : __('Inactive') }}</span></td>
                                     </tr>
                                 </table>
                             </div><!--table-responsive-->

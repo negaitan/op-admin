@@ -65,7 +65,9 @@ class SettingRepository extends BaseRepository
     {
         return DB::transaction(function () use ($data) {
             $setting = parent::create([
-                'title' => $data['title'],
+                'key' => $data['key'],
+                'value' => $data['value'],
+                'exposed' => $data['exposed'],
             ]);
 
             if ($setting) {
@@ -92,7 +94,9 @@ class SettingRepository extends BaseRepository
     {
         return DB::transaction(function () use ($setting, $data) {
             if ($setting->update([
-                'title' => $data['title'],
+                'key' => $data['key'],
+                'value' => $data['value'],
+                'exposed' => $data['exposed'],
             ])) {
                 event(new SettingUpdated($setting));
 

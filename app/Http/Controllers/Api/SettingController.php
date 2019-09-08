@@ -19,7 +19,7 @@ class SettingController extends Controller
     {
         if($request->ajax())
         {
-            return SettingResource::collection(Setting::all());
+            return SettingResource::collection(Setting::exposed()->get());
         }
         return abort(403);
     }

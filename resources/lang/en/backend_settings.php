@@ -2,7 +2,9 @@
 
 return [
     'table' => [
-        'title'    => 'title',
+        'key'           => 'key',
+        'value'         => 'value',
+        'exposed'       => 'exposed',
         'created'       => 'Created',
         'actions'       => 'Actions',
         'last_updated'  => 'Updated',
@@ -33,7 +35,9 @@ return [
 
     'validation' => [
         'attributes' => [
-            'title' => 'title',
+            'key'           => 'key',
+            'value'         => 'value',
+            'exposed'       => 'exposed',
         ]
     ],
 
@@ -45,7 +49,9 @@ return [
         'title'    => 'title',
         'content'   => [
             'overview' => [
-                'title'    => 'title',
+                'key'           => 'key',
+                'value'         => 'value',
+                'exposed'       => 'exposed',
                 'created_at'    => 'Created',
                 'last_updated'  => 'Updated'
             ],
