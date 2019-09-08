@@ -89,3 +89,26 @@
         </div><!--form-group-->
     </div><!--col-->
 </div><!--row-->
+
+<div class="row mt-1 mb-1">
+    <div class="col">
+        <div class="form-group row">
+        {{ html()->label(__('backend_clubs.validation.attributes.images'))->class('col-md-2 form-control-label')->for('images') }}
+
+            <div class="col-md-10">
+                @if (!isset($club))
+                    {{ html()->select('images',$images->pluck('internal_key','id'))
+                        ->class('form-control')
+                        ->multiple()
+                        ->required() }}
+                @else
+                    <select class="form-control" name="images[]" id="images" multiple="" required="">
+                        @foreach ($images->pluck('internal_key','id') as $key => $item)
+                            <option value="{{ $item }}" {{ $club->images->pluck('internal_key')->contains($item) ? ' selected="true"' : '' }}>{{$item}}</option>
+                        @endforeach
+                    </select>
+                @endif
+            </div><!--col-->
+        </div><!--form-group-->
+    </div><!--col-->
+</div><!--row-->

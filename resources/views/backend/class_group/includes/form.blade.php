@@ -20,7 +20,7 @@
         {{ html()->label(__('backend_class_groups.validation.attributes.logo_image'))->class('col-md-2 form-control-label')->for('logo_image_id') }}
 
             <div class="col-md-10">
-                {{ html()->select('logo_image_id', $images->pluck('title','id'))
+                {{ html()->select('logo_image_id', $images->pluck('internal_key','id'))
                     ->class('form-control')
                     ->attribute('maxlength', 191)
                     ->required() }}
@@ -51,7 +51,7 @@
         {{ html()->label(__('backend_class_groups.validation.attributes.cover_image'))->class('col-md-2 form-control-label')->for('cover_image_id') }}
 
             <div class="col-md-10">
-                {{ html()->select('cover_image_id', $images->pluck('title','id'))
+                {{ html()->select('cover_image_id', $images->pluck('internal_key','id'))
                     ->class('form-control')
                     ->attribute('maxlength', 191)
                     ->required() }}
@@ -98,7 +98,7 @@
         {{ html()->label(__('backend_class_groups.validation.attributes.teacher_image'))->class('col-md-2 form-control-label')->for('teacher_image_id') }}
 
             <div class="col-md-10">
-                {{ html()->select('teacher_image_id', $images->pluck('title','id'))
+                {{ html()->select('teacher_image_id', $images->pluck('internal_key','id'))
                     ->class('form-control')
                     ->attribute('maxlength', 191)
                     ->required() }}

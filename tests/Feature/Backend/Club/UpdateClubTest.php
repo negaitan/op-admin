@@ -32,11 +32,31 @@ class UpdateClubTest extends TestCase
 
         $this->assertNotSame('John', $club->name);
 
-        $data = factory(Club::class)->raw(['name' => 'John']);
+        $data = factory(Club::class)->state('withImages')->raw(['name' => 'John']);
 
         $this->patch("/admin/clubs/{$club->id}/update", $data);
 
         $this->assertSame('John', $club->fresh()->name);
+
+        Event::assertDispatched(ClubUpdated::class);
+    }
+
+    /** @test */
+    public function a_club_can_be_updated_with_many_images()
+    {
+        $this->loginAsAdmin();
+        $club = factory(Club::class)->create();
+        Event::fake();
+
+        $this->assertNotSame('John', $club->name);
+
+        $data = factory(Club::class)->state('withImages')->raw(['name' => 'John']);
+
+        $this->patch("/admin/clubs/{$club->id}/update", $data);
+
+        $this->assertSame('John', $club->fresh()->name);
+        $this->assertDatabaseHas('club_image', ['id'=>1]);
+        $this->assertDatabaseHas('club_image', ['id'=>2]);
 
         Event::assertDispatched(ClubUpdated::class);
     }

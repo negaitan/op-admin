@@ -43,7 +43,7 @@ class CreateClubTest extends TestCase
         Event::fake();
         Model::setEventDispatcher($initialDispatcher);
 
-        $data = factory(Club::class)->raw();
+        $data = factory(Club::class)->state('withImages')->raw();
 
         $response = $this->post('/admin/clubs/store', $data);
 
@@ -54,6 +54,34 @@ class CreateClubTest extends TestCase
             ]
         );
 
+        $response->assertSessionHas(['flash_success' => __('backend_clubs.alerts.created')]);
+        Event::assertDispatched(ClubCreated::class);
+    }
+
+    /** @test */
+    public function admin_can_create_new_club_with_many_images()
+    {
+        $this->withoutExceptionHandling();
+        $this->loginAsAdmin();
+        // Hacky workaround for this issue (https://github.com/laravel/framework/issues/18066)
+        // Make sure our events are fired
+        $initialDispatcher = Event::getFacadeRoot();
+        Event::fake();
+        Model::setEventDispatcher($initialDispatcher);
+
+        $data = factory(Club::class)->state('withImages')->raw();
+
+        $response = $this->post('/admin/clubs/store', $data);
+
+        $this->assertDatabaseHas(
+            'clubs',
+            [
+                'name' => $data['name'],
+            ]
+        );
+
+        $this->assertDatabaseHas('club_image', ['id'=>1]);
+        $this->assertDatabaseHas('club_image', ['id'=>2]);
         $response->assertSessionHas(['flash_success' => __('backend_clubs.alerts.created')]);
         Event::assertDispatched(ClubCreated::class);
     }

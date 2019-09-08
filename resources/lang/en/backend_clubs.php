@@ -8,6 +8,7 @@ return [
         'opening_time'  => 'Opening time',
         'latitude'      => 'Latitude',
         'longitude'     => 'Longitude',
+        'images'     => 'Images',
         'created'       => 'Created',
         'actions'       => 'Actions',
         'last_updated'  => 'Updated',
@@ -44,6 +45,7 @@ return [
             'opening_time'  => 'Opening time',
             'latitude'      => 'Latitude',
             'longitude'     => 'Longitude',
+            'images'     => 'Images',
         ]
     ],
 
@@ -54,6 +56,7 @@ return [
         'opening_time'  => 'Opening time',
         'latitude'      => 'Latitude',
         'longitude'     => 'Longitude',
+        'images'     => 'Images',
     ],
 
     'tabs' => [
@@ -66,6 +69,7 @@ return [
                 'opening_time'  => 'Opening time',
                 'latitude'      => 'Latitude',
                 'longitude'     => 'Longitude',
+                'images'     => 'Images',
                 'created_at'    => 'Created',
                 'last_updated'  => 'Updated'
             ],

@@ -29,11 +29,12 @@ class StoreClubRequest extends FormRequest
     {
         return [
             'name'         => ['required', 'max:191'],
-            'web_text_id'  => ['required', 'integer'],
+            'web_text_id'  => ['required', 'integer', 'exists:web_texts,id'],
             'address'      => ['required', 'max:191'],
             'opening_time' => ['required', 'max:191'],
             'latitude'     => ['required', 'max:191'],
             'longitude'    => ['required', 'max:191'],
+            'images'       => ['required', 'array'],
         ];
     }
 

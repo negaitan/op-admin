@@ -8,7 +8,7 @@ $factory->define(WebText::class, function (Generator $faker) {
     return [
         'key' => $faker->unique()->word,
         'value' => $faker->word,
-        'exposed' => $faker->boolean,
+        'exposed' => $faker->boolean($chanceOfGettingTrue = 20),
     ];
 });
 

@@ -6,11 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 use App\Models\Traits\Attribute\ClubAttribute;
+use App\Models\Traits\Relationship\ClubRelationship;
 
 class Club extends Model
 {
     use ClubAttribute,
-        SoftDeletes;
+        SoftDeletes,
+        ClubRelationship;
 
     /**
      * The attributes that should be mutated to dates.
@@ -32,9 +34,4 @@ class Club extends Model
         'latitude',
         'longitude',
     ];
-
-    public function webText()
-    {
-        return $this->hasOne(WebText::class, 'id', 'web_text_id');
-    }
 }

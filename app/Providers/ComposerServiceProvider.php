@@ -47,7 +47,7 @@ class ComposerServiceProvider extends ServiceProvider
         );
         View::composer(
             // This binds web texts that are exposed
-            ['backend.class_group.includes.form'],
+            ['backend.class_group.includes.form', 'backend.club.includes.form'],
             ImageComposer::class
         );
     }

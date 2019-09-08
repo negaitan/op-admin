@@ -6,11 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 use App\Models\Traits\Attribute\ClassGroupAttribute;
+use App\Models\Traits\Relationship\ClassGroupRelationship;
 
 class ClassGroup extends Model
 {
     use ClassGroupAttribute,
-        SoftDeletes;
+        SoftDeletes,
+        ClassGroupRelationship;
 
     /**
      * The attributes that should be mutated to dates.

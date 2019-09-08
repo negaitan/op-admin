@@ -3,13 +3,14 @@
 namespace Tests\Unit\Backend;
 
 use Tests\TestCase;
+use App\Models\Club;
+use App\Models\Image;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Database\Eloquent\Model;
 use App\Events\Backend\Club\ClubCreated;
 use App\Events\Backend\Club\ClubUpdated;
 use App\Repositories\Backend\ClubRepository;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Models\Club;
 
 class ClubRepositoryTest extends TestCase
 {
@@ -29,7 +30,7 @@ class ClubRepositoryTest extends TestCase
 
     protected function getValidClubData($clubData = [])
     {
-        $data = factory(Club::class)->raw();
+        $data = factory(Club::class)->state('withImages')->raw();
         return array_merge($data, $clubData);
     }
 
@@ -71,9 +72,10 @@ class ClubRepositoryTest extends TestCase
 
         $this->assertSame(0, Club::count());
 
-        $this->clubRepository->create($this->getValidClubData());
+        $club = $this->clubRepository->create($this->getValidClubData());
 
         $this->assertSame(1, Club::count());
+        $this->assertCount(count($this->getValidClubData()['images']), $club->images);
 
         Event::assertDispatched(ClubCreated::class);
     }
@@ -92,6 +94,7 @@ class ClubRepositoryTest extends TestCase
         ]));
 
         $this->assertSame('updated', $club->fresh()->name);
+        $this->assertCount(count($this->getValidClubData()['images']), $club->images);
 
         Event::assertDispatched(ClubUpdated::class);
     }

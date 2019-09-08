@@ -29,12 +29,12 @@ class UpdateClassGroupRequest extends FormRequest
     {
         return [
             'name'              => ['required', 'max:191'],
-            'logo_image_id'     => ['required', 'integer'],
+            'logo_image_id'     => ['required', 'integer', 'exists:images,id'],
             'description'       => ['required'],
-            'cover_image_id'    => ['required', 'integer'],
+            'cover_image_id'    => ['required', 'integer', 'exists:images,id'],
             'video_url'         => ['required', 'url'],
             'classes'           => ['required'],
-            'teacher_image_id'  => ['required', 'integer'],
+            'teacher_image_id'  => ['required', 'integer', 'exists:images,id'],
             'teacher_name'      => ['required', 'max:191'],
             'teacher_title'     => ['required', 'max:191'],
             'teacher_text'      => ['required'],

@@ -21,6 +21,7 @@ class ClubResource extends JsonResource
             'opening_time'  => $this->opening_time,
             'latitude'      => $this->latitude,
             'longitude'     => $this->longitude,
+            'images'        => $this->images,
         ];
     }
 }

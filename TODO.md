@@ -4,26 +4,32 @@
 - [x] CRUD WebTexts 
 - [x] CRUD Clubs 
     - [x] Club has one web text 
-    - [ ] Club has many Images 
-    - [ ] Club has many Amenities 
+        - [x] modify Api Resource
+        - [x] modify form VIEW
+        - [x] modify formRequest
+    - [x] Club belongsToMany Images 
+        - [x] modify Api Resource (add array images)
+        - [x] modify form VIEW (Add multiple select with images)
+        - [x] modify formRequest
+    - [ ] Club belongsToMany Amenities 
 - [x] CRUD Gym Classes 
     - [x] GymClass has one club
 - [x] CRUD Plans 
 - [ ] CRUD Club-Plan (RELATION) 
 - [x] CRUD Class Groups 
-    - [ ] Class Group has one logo Image 
-        - [ ] modify Api Resource
-        - [ ] modify form VIEW
-        - [ ] modify formRequest
-    - [ ] Class Group has one cover Image 
-        - [ ] modify Api Resource
-        - [ ] modify form VIEW
-        - [ ] modify formRequest
-    - [ ] Class Group has one teacher Image 
-        - [ ] modify Api Resource
-        - [ ] modify form VIEW
-        - [ ] modify formRequest
+    - [x] Class Group has one logo Image 
+        - [x] modify Api Resource
+        - [x] modify form VIEW
+        - [x] modify formRequest
+    - [x] Class Group has one cover Image 
+        - [x] modify Api Resource
+        - [x] modify form VIEW
+        - [x] modify formRequest
+    - [x] Class Group has one teacher Image 
+        - [x] modify Api Resource
+        - [x] modify form VIEW
+        - [x] modify formRequest
 - [x] CRUD Images 
-- [ ] CRUD Club-Image (RELATION) 
+- [x] CRUD Club-Image (RELATION) 
 - [ ] CRUD Amenities 
 - [ ] CRUD Amenity-Club (RELATION) 

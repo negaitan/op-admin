@@ -56,6 +56,14 @@
                                         <th>@lang('backend_clubs.tabs.content.overview.longitude')</th>
                                         <td>{{ $club->longitude }}</td>
                                     </tr>
+                                    <tr>
+                                        <th>@lang('backend_clubs.tabs.content.overview.images')</th>
+                                        <td>
+                                            @foreach ($club->images as $image)
+                                                <img src="{{ $image->url }}" alt="{{ $image->alt }}" class="img-fluid img-thumbnail">
+                                            @endforeach
+                                        </td>
+                                    </tr>
                                 </table>
                             </div><!--table-responsive-->
                         </div><!--col-->
