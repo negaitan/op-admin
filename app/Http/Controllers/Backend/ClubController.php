@@ -69,7 +69,12 @@ class ClubController extends Controller
     public function store(StoreClubRequest $request)
     {
         $this->clubRepository->create($request->only(
-            'title'
+            'name',
+            'web_text_id',
+            'address',
+            'opening_time',
+            'latitude',
+            'longitude'
         ));
 
         // Fire create event (ClubCreated)
@@ -118,7 +123,12 @@ class ClubController extends Controller
     public function update(UpdateClubRequest $request, Club $club)
     {
         $this->clubRepository->update($club, $request->only(
-            'title'
+            'name',
+            'web_text_id',
+            'address',
+            'opening_time',
+            'latitude',
+            'longitude'
         ));
 
         // Fire update event (ClubUpdated)

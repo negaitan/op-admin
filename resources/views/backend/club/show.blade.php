@@ -33,8 +33,28 @@
                             <div class="table-responsive">
                                 <table class="table table-hover">
                                     <tr>
-                                        <th>@lang('backend_clubs.tabs.content.overview.title')</th>
-                                        <td>{{ $club->title }}</td>
+                                        <th>@lang('backend_clubs.tabs.content.overview.name')</th>
+                                        <td>{{ $club->name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('backend_clubs.tabs.content.overview.web_text')</th>
+                                        <td>{{ $club->webText->key }}: {{ $club->webText->value }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('backend_clubs.tabs.content.overview.address')</th>
+                                        <td>{{ $club->address }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('backend_clubs.tabs.content.overview.opening_time')</th>
+                                        <td>{{ $club->opening_time }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('backend_clubs.tabs.content.overview.latitude')</th>
+                                        <td>{{ $club->latitude }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('backend_clubs.tabs.content.overview.longitude')</th>
+                                        <td>{{ $club->longitude }}</td>
                                     </tr>
                                 </table>
                             </div><!--table-responsive-->

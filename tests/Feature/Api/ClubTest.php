@@ -21,6 +21,7 @@ class ClubTest extends TestCase
     /** @test */
     public function api_can_show_only_one_club()
     {
+        $this->withoutExceptionHandling();
         $club = factory(Club::class)->create();
 
         $response = $this->ajaxGet("/api/clubs/{$club->id}");

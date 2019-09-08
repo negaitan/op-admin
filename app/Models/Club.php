@@ -25,6 +25,17 @@ class Club extends Model
      * @var array
      */
     protected $fillable = [
-        'title',
+        'name',
+        'web_text_id',
+        'address',
+        'opening_time',
+        'latitude',
+        'longitude',
     ];
+
+    public function webText()
+    {
+        return $this->hasOne(WebText::class, 'id', 'web_text_id');
+    }
+
 }

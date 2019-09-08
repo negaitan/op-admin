@@ -2,7 +2,12 @@
 
 return [
     'table' => [
-        'title'    => 'title',
+        'name'          => 'Name',
+        'web_text'      => 'Web Text',
+        'address'       => 'Address',
+        'opening_time'  => 'Opening time',
+        'latitude'      => 'Latitude',
+        'longitude'     => 'Longitude',
         'created'       => 'Created',
         'actions'       => 'Actions',
         'last_updated'  => 'Updated',
@@ -33,19 +38,34 @@ return [
 
     'validation' => [
         'attributes' => [
-            'title' => 'title',
+            'name'          => 'Name',
+            'web_text'      => 'Web Text',
+            'address'       => 'Address',
+            'opening_time'  => 'Opening time',
+            'latitude'      => 'Latitude',
+            'longitude'     => 'Longitude',
         ]
     ],
 
     'sidebar' => [
-        'title'  => 'Title',
+        'name'          => 'Name',
+        'web_text'      => 'Web Text',
+        'address'       => 'Address',
+        'opening_time'  => 'Opening time',
+        'latitude'      => 'Latitude',
+        'longitude'     => 'Longitude',
     ],
 
     'tabs' => [
         'title'    => 'title',
         'content'   => [
             'overview' => [
-                'title'    => 'title',
+                'name'          => 'Name',
+                'web_text'      => 'Web Text',
+                'address'       => 'Address',
+                'opening_time'  => 'Opening time',
+                'latitude'      => 'Latitude',
+                'longitude'     => 'Longitude',
                 'created_at'    => 'Created',
                 'last_updated'  => 'Updated'
             ],

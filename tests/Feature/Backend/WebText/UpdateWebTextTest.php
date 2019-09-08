@@ -26,7 +26,6 @@ class UpdateWebTextTest extends TestCase
     /** @test */
     public function a_web_text_can_be_updated()
     {
-        $this->withoutExceptionHandling();
         $this->loginAsAdmin();
         $web_text = factory(WebText::class)->create();
         Event::fake();

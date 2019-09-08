@@ -65,7 +65,12 @@ class ClubRepository extends BaseRepository
     {
         return DB::transaction(function () use ($data) {
             $club = parent::create([
-                'title' => $data['title'],
+                'name'          => $data['name'],
+                'web_text_id'   => $data['web_text_id'],
+                'address'       => $data['address'],
+                'opening_time'  => $data['opening_time'],
+                'latitude'      => $data['latitude'],
+                'longitude'     => $data['longitude'],
             ]);
 
             if ($club) {
@@ -92,7 +97,12 @@ class ClubRepository extends BaseRepository
     {
         return DB::transaction(function () use ($club, $data) {
             if ($club->update([
-                'title' => $data['title'],
+                'name'          => $data['name'],
+                'web_text_id'   => $data['web_text_id'],
+                'address'       => $data['address'],
+                'opening_time'  => $data['opening_time'],
+                'latitude'      => $data['latitude'],
+                'longitude'     => $data['longitude'],
             ])) {
                 event(new ClubUpdated($club));
 

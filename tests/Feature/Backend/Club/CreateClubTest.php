@@ -30,7 +30,7 @@ class CreateClubTest extends TestCase
 
         $response = $this->post('/admin/clubs/store', []);
 
-        $response->assertSessionHasErrors(['title']);
+        $response->assertSessionHasErrors(['name', 'web_text_id', 'address', 'opening_time', 'latitude', 'longitude']);
     }
 
     /** @test */
@@ -43,14 +43,14 @@ class CreateClubTest extends TestCase
         Event::fake();
         Model::setEventDispatcher($initialDispatcher);
 
-        $response = $this->post('/admin/clubs/store', [
-            'title' => 'John',
-        ]);
+        $data = factory(Club::class)->raw();
+
+        $response = $this->post('/admin/clubs/store', $data);
 
         $this->assertDatabaseHas(
             'clubs',
             [
-                'title' => 'John',
+                'name' => $data['name'],
             ]
         );
 

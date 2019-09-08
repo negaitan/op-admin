@@ -28,7 +28,12 @@ class StoreClubRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'     => ['required', 'max:191'],
+            'name'         => ['required', 'max:191'],
+            'web_text_id'  => ['required', 'integer'],
+            'address'      => ['required', 'max:191'],
+            'opening_time' => ['required', 'max:191'],
+            'latitude'     => ['required', 'max:191'],
+            'longitude'    => ['required', 'max:191'],
         ];
     }
 
@@ -40,8 +45,8 @@ class StoreClubRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required'    => 'The :attribute field is required.',
-            'title.max'         => 'The :attribute field must have less than :max characters',
+            'name.required'    => 'The :attribute field is required.',
+            'name.max'         => 'The :attribute field must have less than :max characters',
         ];
     }
 }

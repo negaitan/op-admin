@@ -30,13 +30,13 @@ class UpdateClubTest extends TestCase
         $club = factory(Club::class)->create();
         Event::fake();
 
-        $this->assertNotSame('John', $club->title);
+        $this->assertNotSame('John', $club->name);
 
-        $this->patch("/admin/clubs/{$club->id}/update", [
-            'title' => 'John',
-        ]);
+        $data = factory(Club::class)->raw(['name' => 'John']);
 
-        $this->assertSame('John', $club->fresh()->title);
+        $this->patch("/admin/clubs/{$club->id}/update", $data);
+
+        $this->assertSame('John', $club->fresh()->name);
 
         Event::assertDispatched(ClubUpdated::class);
     }

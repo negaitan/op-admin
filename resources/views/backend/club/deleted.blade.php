@@ -24,26 +24,7 @@
         <div class="row mt-4">
             <div class="col">
                 <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>@lang('backend_clubs.table.title')</th>
-                            <th>@lang('backend_clubs.table.created')</th>
-                            <th>@lang('backend_clubs.table.deleted')</th>
-                            <th>@lang('labels.general.actions')</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($clubs as $club)
-                            <tr>
-                                <td class="align-middle"><a href="/admin/clubs/{{ $club->id }}">{{ $club->title }}</a></td>
-                                <td class="align-middle">{!! $club->created_at !!}</td>
-                                <td class="align-middle">{{ $club->deleted_at->diffForHumans() }}</td>
-                                <td class="align-middle">{!! $club->trashed_buttons !!}</td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                    @include('backend.club.includes.table')
                 </div>
             </div><!--col-->
         </div><!--row-->

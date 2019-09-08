@@ -15,7 +15,12 @@ class ClubResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'title'      => $this->title,
+            'name'          => $this->name,
+            'web_text_id'   => $this->webText->value,
+            'address'       => $this->address,
+            'opening_time'  => $this->opening_time,
+            'latitude'      => $this->latitude,
+            'longitude'     => $this->longitude,
         ];
     }
 }
