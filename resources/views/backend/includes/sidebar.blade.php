@@ -13,6 +13,8 @@
                 </a>
             </li>
 
+            @include('backend.includes.sidebar_menu')
+
             <li class="nav-title">
                 @lang('menus.backend.sidebar.system')
             </li>
