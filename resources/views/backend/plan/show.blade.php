@@ -33,8 +33,24 @@
                             <div class="table-responsive">
                                 <table class="table table-hover">
                                     <tr>
-                                        <th>@lang('backend_plans.tabs.content.overview.title')</th>
-                                        <td>{{ $plan->title }}</td>
+                                        <th>@lang('backend_plans.tabs.content.overview.name')</th>
+                                        <td>{{ $plan->name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('backend_plans.tabs.content.overview.description')</th>
+                                        <td>{{ $plan->description }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('backend_plans.tabs.content.overview.price_month')</th>
+                                        <td>$ {{ $plan->price_month }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('backend_plans.tabs.content.overview.price_matriculation')</th>
+                                        <td>$ {{ $plan->price_matriculation }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('backend_plans.tabs.content.overview.price_proportional')</th>
+                                        <td>$ {{ $plan->price_proportional }}</td>
                                     </tr>
                                 </table>
                             </div><!--table-responsive-->

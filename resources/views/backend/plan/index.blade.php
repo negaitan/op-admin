@@ -24,26 +24,7 @@
         <div class="row mt-4">
             <div class="col">
                 <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>@lang('backend_plans.table.title')</th>
-                            <th>@lang('backend_plans.table.created')</th>
-                            <th>@lang('backend_plans.table.last_updated')</th>
-                            <th>@lang('backend_plans.table.actions')</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($plans as $plan)
-                            <tr>
-                                <td class="align-middle"><a href="/admin/plans/{{ $plan->id }}">{{ $plan->title }}</a></td>
-                                <td class="align-middle">{!! $plan->created_at !!}</td>
-                                <td class="align-middle">{{ $plan->updated_at->diffForHumans() }}</td>
-                                <td class="align-middle">{!! $plan->action_buttons !!}</td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                    @include('backend.plan.includes.table')
                 </div>
             </div><!--col-->
         </div><!--row-->

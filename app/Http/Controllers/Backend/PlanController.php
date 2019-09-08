@@ -69,7 +69,11 @@ class PlanController extends Controller
     public function store(StorePlanRequest $request)
     {
         $this->planRepository->create($request->only(
-            'title'
+            'name',
+            'description',
+            'price_month',
+            'price_matriculation',
+            'price_proportional'
         ));
 
         // Fire create event (PlanCreated)
@@ -118,7 +122,11 @@ class PlanController extends Controller
     public function update(UpdatePlanRequest $request, Plan $plan)
     {
         $this->planRepository->update($plan, $request->only(
-            'title'
+            'name',
+            'description',
+            'price_month',
+            'price_matriculation',
+            'price_proportional'
         ));
 
         // Fire update event (PlanUpdated)

@@ -25,6 +25,21 @@ class Plan extends Model
      * @var array
      */
     protected $fillable = [
-        'title',
+        'name',
+        'description',
+        'price_month',
+        'price_matriculation',
+        'price_proportional'
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'price_month' => 'float',
+        'price_matriculation' => 'float',
+        'price_proportional' => 'float',
     ];
 }

@@ -28,7 +28,11 @@ class UpdatePlanRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'     => ['required', 'max:191'],
+            'name'                  => ['required', 'max:191'],
+            'description'           => ['required'],
+            'price_month'           => ['required', 'numeric'],
+            'price_matriculation'   => ['required', 'numeric'],
+            'price_proportional'    => ['required', 'numeric'],
         ];
     }
 
@@ -40,8 +44,8 @@ class UpdatePlanRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required'    => 'The :attribute field is required.',
-            'title.max'         => 'The :attribute field must have less than :max characters',
+            'name.required'    => 'The :attribute field is required.',
+            'name.max'         => 'The :attribute field must have less than :max characters',
         ];
     }
 }

@@ -16,7 +16,11 @@ class CreatePlansTable extends Migration
         if (!Schema::hasTable('plans')) {
             Schema::create('plans', function (Blueprint $table) {
                 $table->increments('id');
-                $table->text('title', 80);
+                $table->string('name'); // nombre
+                $table->text('description'); // descripcion
+                $table->float('price_month'); // precioMensual
+                $table->float('price_matriculation'); // precioMatricula
+                $table->float('price_proportional'); // precioProporcional
                 $table->softDeletes();
                 $table->timestamps();
             });

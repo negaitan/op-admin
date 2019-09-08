@@ -2,7 +2,11 @@
 
 return [
     'table' => [
-        'title'    => 'title',
+        'name'                  => 'Name',
+        'description'           => 'Description',
+        'price_month'           => 'Price month',
+        'price_matriculation'   => 'Price matriculation',
+        'price_proportional'    => 'Price proportional',
         'created'       => 'Created',
         'actions'       => 'Actions',
         'last_updated'  => 'Updated',
@@ -25,7 +29,11 @@ return [
         'create'        => 'Create',
         'edit'          => 'Edit',
         'view'          => 'View',
-        'title'    => 'title',
+        'name'                  => 'Name',
+        'description'           => 'Description',
+        'price_month'           => 'Price month',
+        'price_matriculation'   => 'Price matriculation',
+        'price_proportional'    => 'Price proportional',
         'created_at'    => 'Created at',
         'last_updated'  => 'Updated at',
         'deleted'       => 'Deleted',
@@ -33,19 +41,31 @@ return [
 
     'validation' => [
         'attributes' => [
-            'title' => 'title',
+            'name'                  => 'Name',
+            'description'           => 'Description',
+            'price_month'           => 'Price month',
+            'price_matriculation'   => 'Price matriculation',
+            'price_proportional'    => 'Price proportional',
         ]
     ],
 
     'sidebar' => [
-        'title'  => 'Title',
+        'name'                  => 'Name',
+        'description'           => 'Description',
+        'price_month'           => 'Price month',
+        'price_matriculation'   => 'Price matriculation',
+        'price_proportional'    => 'Price proportional',
     ],
 
     'tabs' => [
         'title'    => 'title',
         'content'   => [
             'overview' => [
-                'title'    => 'title',
+                'name'                  => 'Name',
+                'description'           => 'Description',
+                'price_month'           => 'Price month',
+                'price_matriculation'   => 'Price matriculation',
+                'price_proportional'    => 'Price proportional',
                 'created_at'    => 'Created',
                 'last_updated'  => 'Updated'
             ],

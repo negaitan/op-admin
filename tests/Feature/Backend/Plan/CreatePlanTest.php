@@ -30,7 +30,13 @@ class CreatePlanTest extends TestCase
 
         $response = $this->post('/admin/plans/store', []);
 
-        $response->assertSessionHasErrors(['title']);
+        $response->assertSessionHasErrors([
+            'name',
+            'description',
+            'price_month',
+            'price_matriculation',
+            'price_proportional'
+        ]);
     }
 
     /** @test */
@@ -43,14 +49,14 @@ class CreatePlanTest extends TestCase
         Event::fake();
         Model::setEventDispatcher($initialDispatcher);
 
-        $response = $this->post('/admin/plans/store', [
-            'title' => 'John',
-        ]);
+        $data = factory(Plan::class)->raw(['name' => 'John']);
+
+        $response = $this->post('/admin/plans/store', $data);
 
         $this->assertDatabaseHas(
             'plans',
             [
-                'title' => 'John',
+                'name' => 'John',
             ]
         );
 

@@ -8,7 +8,10 @@
     - [ ] Club has many Amenities 
 - [x] CRUD Gym Classes 
     - [x] GymClass has one club
-- [ ] CRUD Plans 
+- [x] CRUD Plans 
+- [ ] CRUD Club-Plan (RELATION) 
 - [ ] CRUD Class Groups 
 - [ ] CRUD Images 
+- [ ] CRUD Club-Image (RELATION) 
 - [ ] CRUD Amenities 
+- [ ] CRUD Amenity-Club (RELATION) 

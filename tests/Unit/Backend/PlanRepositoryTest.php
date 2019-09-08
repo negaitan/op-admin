@@ -30,7 +30,11 @@ class PlanRepositoryTest extends TestCase
     protected function getValidPlanData($planData = [])
     {
         return array_merge([
-            'title' => 'Title',
+            'name' => 'name',
+            'description' => 'description',
+            'price_month' => 10,
+            'price_matriculation' => 10,
+            'price_proportional' => 10
         ], $planData);
     }
 
@@ -89,10 +93,14 @@ class PlanRepositoryTest extends TestCase
         $plan = factory(Plan::class)->create();
 
         $this->planRepository->update($plan, $this->getValidPlanData([
-            'title' => 'updated',
+            'name' => 'updated',
+            'description' => 'description',
+            'price_month' => 10,
+            'price_matriculation' => 10,
+            'price_proportional' => 10
         ]));
 
-        $this->assertSame('updated', $plan->fresh()->title);
+        $this->assertSame('updated', $plan->fresh()->name);
 
         Event::assertDispatched(PlanUpdated::class);
     }

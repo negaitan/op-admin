@@ -30,13 +30,13 @@ class UpdatePlanTest extends TestCase
         $plan = factory(Plan::class)->create();
         Event::fake();
 
-        $this->assertNotSame('John', $plan->title);
+        $this->assertNotSame('John', $plan->name);
 
-        $this->patch("/admin/plans/{$plan->id}/update", [
-            'title' => 'John',
-        ]);
+        $data = factory(Plan::class)->raw(['name' => 'John']);
 
-        $this->assertSame('John', $plan->fresh()->title);
+        $this->patch("/admin/plans/{$plan->id}/update", $data);
+
+        $this->assertSame('John', $plan->fresh()->name);
 
         Event::assertDispatched(PlanUpdated::class);
     }

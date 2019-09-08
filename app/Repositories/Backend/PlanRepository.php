@@ -65,7 +65,11 @@ class PlanRepository extends BaseRepository
     {
         return DB::transaction(function () use ($data) {
             $plan = parent::create([
-                'title' => $data['title'],
+                'name' => $data['name'],
+                'description' => $data['description'],
+                'price_month' => $data['price_month'],
+                'price_matriculation' => $data['price_matriculation'],
+                'price_proportional' => $data['price_proportional'],
             ]);
 
             if ($plan) {
@@ -92,7 +96,11 @@ class PlanRepository extends BaseRepository
     {
         return DB::transaction(function () use ($plan, $data) {
             if ($plan->update([
-                'title' => $data['title'],
+                'name' => $data['name'],
+                'description' => $data['description'],
+                'price_month' => $data['price_month'],
+                'price_matriculation' => $data['price_matriculation'],
+                'price_proportional' => $data['price_proportional'],
             ])) {
                 event(new PlanUpdated($plan));
 

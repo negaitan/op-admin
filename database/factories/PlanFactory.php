@@ -6,7 +6,11 @@ use App\Models\Plan;
 
 $factory->define(Plan::class, function (Generator $faker) {
     return [
-        'title' => $faker->word,
+        'name' => $faker->word,
+        'description' => $faker->catchPhrase,
+        'price_month' => $faker->randomFloat,
+        'price_matriculation' => $faker->randomFloat,
+        'price_proportional' => $faker->randomFloat
     ];
 });
 
