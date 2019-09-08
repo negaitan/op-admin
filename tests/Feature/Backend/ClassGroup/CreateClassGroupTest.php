@@ -30,7 +30,19 @@ class CreateClassGroupTest extends TestCase
 
         $response = $this->post('/admin/class_groups/store', []);
 
-        $response->assertSessionHasErrors(['title']);
+        $response->assertSessionHasErrors([
+            'name',
+            'logo_image_id',
+            'description',
+            'cover_image_id',
+            'video_url',
+            'classes',
+            'teacher_image_id',
+            'teacher_name',
+            'teacher_title',
+            'teacher_text',
+            'playlist_url',
+        ]);
     }
 
     /** @test */
@@ -43,14 +55,14 @@ class CreateClassGroupTest extends TestCase
         Event::fake();
         Model::setEventDispatcher($initialDispatcher);
 
-        $response = $this->post('/admin/class_groups/store', [
-            'title' => 'John',
-        ]);
+        $data = factory(ClassGroup::class)->raw(['name' => 'John']);
+
+        $response = $this->post('/admin/class_groups/store', $data);
 
         $this->assertDatabaseHas(
             'class_groups',
             [
-                'title' => 'John',
+                'name' => 'John',
             ]
         );
 

@@ -28,7 +28,17 @@ class StoreClassGroupRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'     => ['required', 'max:191'],
+            'name'              => ['required', 'max:191'],
+            'logo_image_id'     => ['required', 'integer'],
+            'description'       => ['required'],
+            'cover_image_id'    => ['required', 'integer'],
+            'video_url'         => ['required', 'url'],
+            'classes'           => ['required'],
+            'teacher_image_id'  => ['required', 'integer'],
+            'teacher_name'      => ['required', 'max:191'],
+            'teacher_title'     => ['required', 'max:191'],
+            'teacher_text'      => ['required'],
+            'playlist_url'      => ['required', 'url'],
         ];
     }
 
@@ -40,8 +50,8 @@ class StoreClassGroupRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required'    => 'The :attribute field is required.',
-            'title.max'         => 'The :attribute field must have less than :max characters',
+            'name.required'    => 'The :attribute field is required.',
+            'name.max'         => 'The :attribute field must have less than :max characters',
         ];
     }
 }

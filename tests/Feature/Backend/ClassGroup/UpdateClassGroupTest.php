@@ -30,13 +30,13 @@ class UpdateClassGroupTest extends TestCase
         $class_group = factory(ClassGroup::class)->create();
         Event::fake();
 
-        $this->assertNotSame('John', $class_group->title);
+        $this->assertNotSame('John', $class_group->name);
 
-        $this->patch("/admin/class_groups/{$class_group->id}/update", [
-            'title' => 'John',
-        ]);
+        $data = factory(ClassGroup::class)->raw(['name' => 'John']);
 
-        $this->assertSame('John', $class_group->fresh()->title);
+        $this->patch("/admin/class_groups/{$class_group->id}/update", $data);
+
+        $this->assertSame('John', $class_group->fresh()->name);
 
         Event::assertDispatched(ClassGroupUpdated::class);
     }

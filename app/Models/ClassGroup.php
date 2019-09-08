@@ -25,6 +25,16 @@ class ClassGroup extends Model
      * @var array
      */
     protected $fillable = [
-        'title',
+        'name',
+        'logo_image_id',
+        'description',
+        'cover_image_id',
+        'video_url',
+        'classes',
+        'teacher_image_id',
+        'teacher_name',
+        'teacher_title',
+        'teacher_text',
+        'playlist_url',
     ];
 }

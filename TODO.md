@@ -10,7 +10,19 @@
     - [x] GymClass has one club
 - [x] CRUD Plans 
 - [ ] CRUD Club-Plan (RELATION) 
-- [ ] CRUD Class Groups 
+- [x] CRUD Class Groups 
+    - [ ] Class Group has one logo Image 
+        - [ ] modify Api Resource
+        - [ ] modify form VIEW
+        - [ ] modify formRequest
+    - [ ] Class Group has one cover Image 
+        - [ ] modify Api Resource
+        - [ ] modify form VIEW
+        - [ ] modify formRequest
+    - [ ] Class Group has one teacher Image 
+        - [ ] modify Api Resource
+        - [ ] modify form VIEW
+        - [ ] modify formRequest
 - [ ] CRUD Images 
 - [ ] CRUD Club-Image (RELATION) 
 - [ ] CRUD Amenities 

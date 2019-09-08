@@ -69,7 +69,17 @@ class ClassGroupController extends Controller
     public function store(StoreClassGroupRequest $request)
     {
         $this->class_groupRepository->create($request->only(
-            'title'
+            'name',
+            'logo_image_id',
+            'description',
+            'cover_image_id',
+            'video_url',
+            'classes',
+            'teacher_image_id',
+            'teacher_name',
+            'teacher_title',
+            'teacher_text',
+            'playlist_url'
         ));
 
         // Fire create event (ClassGroupCreated)
@@ -118,7 +128,17 @@ class ClassGroupController extends Controller
     public function update(UpdateClassGroupRequest $request, ClassGroup $classGroup)
     {
         $this->class_groupRepository->update($classGroup, $request->only(
-            'title'
+            'name',
+            'logo_image_id',
+            'description',
+            'cover_image_id',
+            'video_url',
+            'classes',
+            'teacher_image_id',
+            'teacher_name',
+            'teacher_title',
+            'teacher_text',
+            'playlist_url'
         ));
 
         // Fire update event (ClassGroupUpdated)

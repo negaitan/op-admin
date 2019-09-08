@@ -29,13 +29,12 @@ class ClassGroupRepositoryTest extends TestCase
 
     protected function getValidClassGroupData($class_groupData = [])
     {
-        return array_merge([
-            'title' => 'Title',
-        ], $class_groupData);
+        $data = factory(ClassGroup::class)->raw();
+        return array_merge($data, $class_groupData);
     }
 
     /** @test */
-    public function it_can_paginate_the_active_()
+    public function it_can_paginate_the_active_class_groups()
     {
         factory(ClassGroup::class, 30)->create();
 
@@ -89,10 +88,10 @@ class ClassGroupRepositoryTest extends TestCase
         $class_group = factory(ClassGroup::class)->create();
 
         $this->class_groupRepository->update($class_group, $this->getValidClassGroupData([
-            'title' => 'updated',
+            'name' => 'updated',
         ]));
 
-        $this->assertSame('updated', $class_group->fresh()->title);
+        $this->assertSame('updated', $class_group->fresh()->name);
 
         Event::assertDispatched(ClassGroupUpdated::class);
     }

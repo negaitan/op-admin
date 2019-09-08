@@ -65,7 +65,17 @@ class ClassGroupRepository extends BaseRepository
     {
         return DB::transaction(function () use ($data) {
             $class_group = parent::create([
-                'title' => $data['title'],
+                'name'              => $data['name'],
+                'logo_image_id'     => $data['logo_image_id'],
+                'description'       => $data['description'],
+                'cover_image_id'    => $data['cover_image_id'],
+                'video_url'         => $data['video_url'],
+                'classes'           => $data['classes'],
+                'teacher_image_id'  => $data['teacher_image_id'],
+                'teacher_name'      => $data['teacher_name'],
+                'teacher_title'     => $data['teacher_title'],
+                'teacher_text'      => $data['teacher_text'],
+                'playlist_url'      => $data['playlist_url'],
             ]);
 
             if ($class_group) {
@@ -92,7 +102,17 @@ class ClassGroupRepository extends BaseRepository
     {
         return DB::transaction(function () use ($class_group, $data) {
             if ($class_group->update([
-                'title' => $data['title'],
+                'name'              => $data['name'],
+                'logo_image_id'     => $data['logo_image_id'],
+                'description'       => $data['description'],
+                'cover_image_id'    => $data['cover_image_id'],
+                'video_url'         => $data['video_url'],
+                'classes'           => $data['classes'],
+                'teacher_image_id'  => $data['teacher_image_id'],
+                'teacher_name'      => $data['teacher_name'],
+                'teacher_title'     => $data['teacher_title'],
+                'teacher_text'      => $data['teacher_text'],
+                'playlist_url'      => $data['playlist_url'],
             ])) {
                 event(new ClassGroupUpdated($class_group));
 

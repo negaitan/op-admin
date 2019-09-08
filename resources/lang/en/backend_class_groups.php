@@ -2,7 +2,17 @@
 
 return [
     'table' => [
-        'title'    => 'title',
+        'name'              => 'Name',
+        'logo_image'        => 'Logo image',
+        'description'       => 'Description',
+        'cover_image'       => 'Cover image',
+        'video_url'         => 'Video url',
+        'classes'           => 'Classes',
+        'teacher_image'     => 'Teacher image',
+        'teacher_name'      => 'Teacher name',
+        'teacher_title'     => 'Teacher title',
+        'teacher_text'      => 'Teacher text',
+        'playlist_url'      => 'Playlist url',
         'created'       => 'Created',
         'actions'       => 'Actions',
         'last_updated'  => 'Updated',
@@ -33,19 +43,49 @@ return [
 
     'validation' => [
         'attributes' => [
-            'title' => 'title',
+            'name'              => 'Name',
+            'logo_image'        => 'Logo image',
+            'description'       => 'Description',
+            'cover_image'       => 'Cover image',
+            'video_url'         => 'Video url',
+            'classes'           => 'Classes',
+            'teacher_image'     => 'Teacher image',
+            'teacher_name'      => 'Teacher name',
+            'teacher_title'     => 'Teacher title',
+            'teacher_text'      => 'Teacher text',
+            'playlist_url'      => 'Playlist url',
         ]
     ],
 
     'sidebar' => [
-        'title'  => 'Title',
+        'name'              => 'Name',
+        'logo_image'        => 'Logo image',
+        'description'       => 'Description',
+        'cover_image'       => 'Cover image',
+        'video_url'         => 'Video url',
+        'classes'           => 'Classes',
+        'teacher_image'     => 'Teacher image',
+        'teacher_name'      => 'Teacher name',
+        'teacher_title'     => 'Teacher title',
+        'teacher_text'      => 'Teacher text',
+        'playlist_url'      => 'Playlist url',
     ],
 
     'tabs' => [
         'title'    => 'title',
         'content'   => [
             'overview' => [
-                'title'    => 'title',
+                'name'              => 'Name',
+                'logo_image'        => 'Logo image',
+                'description'       => 'Description',
+                'cover_image'       => 'Cover image',
+                'video_url'         => 'Video url',
+                'classes'           => 'Classes',
+                'teacher_image'     => 'Teacher image',
+                'teacher_name'      => 'Teacher name',
+                'teacher_title'     => 'Teacher title',
+                'teacher_text'      => 'Teacher text',
+                'playlist_url'      => 'Playlist url',
                 'created_at'    => 'Created',
                 'last_updated'  => 'Updated'
             ],
