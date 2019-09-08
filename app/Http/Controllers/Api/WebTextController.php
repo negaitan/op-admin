@@ -19,7 +19,7 @@ class WebTextController extends Controller
     {
         if($request->ajax())
         {
-            return WebTextResource::collection(WebText::all());
+            return WebTextResource::collection(WebText::exposed()->get());
         }
         return abort(403);
     }

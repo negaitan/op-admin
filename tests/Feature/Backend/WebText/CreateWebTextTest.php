@@ -30,7 +30,7 @@ class CreateWebTextTest extends TestCase
 
         $response = $this->post('/admin/web_texts/store', []);
 
-        $response->assertSessionHasErrors(['title']);
+        $response->assertSessionHasErrors(['key','value','exposed']);
     }
 
     /** @test */
@@ -44,13 +44,15 @@ class CreateWebTextTest extends TestCase
         Model::setEventDispatcher($initialDispatcher);
 
         $response = $this->post('/admin/web_texts/store', [
-            'title' => 'John',
+            'key' => 'John',
+            'value' => 'John text',
+            'exposed' => true,
         ]);
 
         $this->assertDatabaseHas(
             'web_texts',
             [
-                'title' => 'John',
+                'key' => 'John',
             ]
         );
 

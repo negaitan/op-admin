@@ -7,5 +7,5 @@ use App\Http\Controllers\Api\WebTextController;
  */
 
 // /api/web_texts
-Route::get('web_texts', [WebTextController::class, 'index'])->name('web_texts.index');
-Route::get('web_texts/{web_text}', [WebTextController::class, 'show'])->name('web_texts.show');
+Route::get('web-texts', [WebTextController::class, 'index'])->name('web_texts.index');
+// Route::get('web-texts/{web_text}', [WebTextController::class, 'show'])->name('web_texts.show');

@@ -24,26 +24,7 @@
         <div class="row mt-4">
             <div class="col">
                 <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>@lang('backend_web_texts.table.title')</th>
-                            <th>@lang('backend_web_texts.table.created')</th>
-                            <th>@lang('backend_web_texts.table.deleted')</th>
-                            <th>@lang('labels.general.actions')</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($webTexts as $webText)
-                            <tr>
-                                <td class="align-middle"><a href="/admin/web_texts/{{ $webText->id }}">{{ $webText->title }}</a></td>
-                                <td class="align-middle">{!! $webText->created_at !!}</td>
-                                <td class="align-middle">{{ $webText->deleted_at->diffForHumans() }}</td>
-                                <td class="align-middle">{!! $webText->trashed_buttons !!}</td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                    @include('backend.web_text.includes.table')
                 </div>
             </div><!--col-->
         </div><!--row-->

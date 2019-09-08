@@ -26,18 +26,42 @@ class UpdateWebTextTest extends TestCase
     /** @test */
     public function a_web_text_can_be_updated()
     {
+        $this->withoutExceptionHandling();
         $this->loginAsAdmin();
         $web_text = factory(WebText::class)->create();
         Event::fake();
 
-        $this->assertNotSame('John', $web_text->title);
+        $this->assertNotSame('John', $web_text->key);
 
         $this->patch("/admin/web_texts/{$web_text->id}/update", [
-            'title' => 'John',
+            'key' => 'John',
+            'value' => 'John text',
+            'exposed' => true,
         ]);
 
-        $this->assertSame('John', $web_text->fresh()->title);
+        $this->assertSame('John', $web_text->fresh()->key);
 
         Event::assertDispatched(WebTextUpdated::class);
+    }
+
+    /** @test */
+    public function a_eb_text_cant_be_updated_if_key_is_already_taken()
+    {
+        $this->loginAsAdmin();
+        $web_textA = factory(WebText::class)->create(['key' => 'John']);
+        $web_text = factory(WebText::class)->create();
+        Event::fake();
+
+        $this->assertNotSame($web_textA->key, $web_text->key);
+
+        $response = $this->patch("/admin/web_texts/{$web_text->id}/update", [
+            'key' => 'John',
+            'value' => 'John text',
+            'exposed' => true,
+        ]);
+        $response->assertRedirect();
+        $response->assertSessionHasErrors();
+
+        Event::assertNotDispatched(WebTextUpdated::class);
     }
 }

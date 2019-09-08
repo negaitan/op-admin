@@ -33,8 +33,16 @@
                             <div class="table-responsive">
                                 <table class="table table-hover">
                                     <tr>
-                                        <th>@lang('backend_web_texts.tabs.content.overview.title')</th>
-                                        <td>{{ $webText->title }}</td>
+                                        <th>@lang('backend_settings.tabs.content.overview.key')</th>
+                                        <td>{{ $webText->key }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('backend_settings.tabs.content.overview.value')</th>
+                                        <td>{{ $webText->value }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('backend_settings.tabs.content.overview.exposed')</th>
+                                        <td><span class="badge badge-{{ $webText->exposed ? 'success' : 'danger' }}">{{ $webText->exposed ? __('Active') : __('Inactive') }}</span></td>
                                     </tr>
                                 </table>
                             </div><!--table-responsive-->

@@ -11,20 +11,40 @@ class WebTextTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function it_can_show_all_web_text_items()
+    public function web_texts_endpoint_is_ok()
     {
-        $response = $this->ajaxGet('/api/web_texts');
+        $response = $this->ajaxGet('/api/web-texts');
 
         $response->assertStatus(200);
     }
 
     /** @test */
-    public function api_can_show_only_one_web_text()
+    public function web_texts_endpoint_is_unauthenticated_if_is_not_an_ajax_request()
     {
-        $web_text = factory(WebText::class)->create();
+        $response = $this->get('/api/web-texts');
 
-        $response = $this->ajaxGet("/api/web_texts/{$web_text->id}");
+        $response->assertStatus(403);
+    }
+
+    /** @test */
+    public function it_can_show_all_web_texts_exposed_items_at_web_texts()
+    {
+        $text_items_exposed = factory(WebText::class)->states('exposed')->create();
+        $text_items_unexposed = factory(WebText::class)->states('unexposed')->create();
+
+        $response = $this->ajaxGet('/api/web-texts',[],true);
 
         $response->assertStatus(200);
+
+        $data = (array)($response->getData()->data[0]);
+
+        $this->assertArrayHasKey('key', $data);
+        $this->assertArrayHasKey('value', $data);
+        $this->assertArrayHasKey('exposed', $data);
+
+        $this->assertCount(1, $response->getData()->data);
+        $this->assertEquals($data['key'], $text_items_exposed->key);
+        $this->assertEquals($data['value'], $text_items_exposed->value);
+        $this->assertEquals($data['exposed'], $text_items_exposed->exposed);
     }
 }

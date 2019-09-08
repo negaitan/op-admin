@@ -16,7 +16,9 @@ class CreateWebTextsTable extends Migration
         if (!Schema::hasTable('web_texts')) {
             Schema::create('web_texts', function (Blueprint $table) {
                 $table->increments('id');
-                $table->text('title', 80);
+                $table->string('key')->unique();
+                $table->text('value');
+                $table->boolean('exposed');
                 $table->softDeletes();
                 $table->timestamps();
             });

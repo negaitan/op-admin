@@ -69,7 +69,9 @@ class WebTextController extends Controller
     public function store(StoreWebTextRequest $request)
     {
         $this->web_textRepository->create($request->only(
-            'title'
+            'key',
+            'value',
+            'exposed'
         ));
 
         // Fire create event (WebTextCreated)
@@ -118,7 +120,9 @@ class WebTextController extends Controller
     public function update(UpdateWebTextRequest $request, WebText $webText)
     {
         $this->web_textRepository->update($webText, $request->only(
-            'title'
+            'key',
+            'value',
+            'exposed'
         ));
 
         // Fire update event (WebTextUpdated)

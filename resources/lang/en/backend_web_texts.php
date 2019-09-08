@@ -2,7 +2,9 @@
 
 return [
     'table' => [
-        'title'    => 'title',
+        'key'           => 'key',
+        'value'         => 'value',
+        'exposed'       => 'exposed',
         'created'       => 'Created',
         'actions'       => 'Actions',
         'last_updated'  => 'Updated',
@@ -33,12 +35,16 @@ return [
 
     'validation' => [
         'attributes' => [
-            'title' => 'title',
+            'key'           => 'key',
+            'value'         => 'value',
+            'exposed'       => 'exposed',
         ]
     ],
 
     'sidebar' => [
-        'title'  => 'Title',
+        'key'           => 'key',
+        'value'         => 'value',
+        'exposed'       => 'exposed',
     ],
 
     'tabs' => [

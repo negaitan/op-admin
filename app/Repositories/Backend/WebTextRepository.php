@@ -65,7 +65,9 @@ class WebTextRepository extends BaseRepository
     {
         return DB::transaction(function () use ($data) {
             $web_text = parent::create([
-                'title' => $data['title'],
+                'key' => $data['key'],
+                'value' => $data['value'],
+                'exposed' => $data['exposed'],
             ]);
 
             if ($web_text) {
@@ -92,7 +94,9 @@ class WebTextRepository extends BaseRepository
     {
         return DB::transaction(function () use ($web_text, $data) {
             if ($web_text->update([
-                'title' => $data['title'],
+                'key' => $data['key'],
+                'value' => $data['value'],
+                'exposed' => $data['exposed'],
             ])) {
                 event(new WebTextUpdated($web_text));
 

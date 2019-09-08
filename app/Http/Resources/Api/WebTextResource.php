@@ -15,7 +15,9 @@ class WebTextResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'title'      => $this->title,
+            'key'      => $this->key,
+            'value'    => $this->value,
+            'exposed'  => $this->exposed,
         ];
     }
 }

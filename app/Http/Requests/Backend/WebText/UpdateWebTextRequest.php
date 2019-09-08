@@ -20,15 +20,13 @@ class UpdateWebTextRequest extends FormRequest
         return $this->user()->isAdmin();
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
     public function rules()
     {
+        $web_text_id = request()->route()->parameters['web_text']->id; // admin/web_texts/2/update  0/1/2/3
         return [
-            'title'     => ['required', 'max:191'],
+            'key'     => ['required', 'max:191', 'unique:web_texts,key,'.$web_text_id],
+            'value'     => ['required', 'string'],
+            'exposed'     => ['required', 'boolean'],
         ];
     }
 
@@ -40,8 +38,8 @@ class UpdateWebTextRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required'    => 'The :attribute field is required.',
-            'title.max'         => 'The :attribute field must have less than :max characters',
+            'key.required'    => 'The :attribute field is required.',
+            'key.max'         => 'The :attribute field must have less than :max characters',
         ];
     }
 }

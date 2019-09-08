@@ -6,7 +6,21 @@ use App\Models\WebText;
 
 $factory->define(WebText::class, function (Generator $faker) {
     return [
-        'title' => $faker->word,
+        'key' => $faker->unique()->word,
+        'value' => $faker->word,
+        'exposed' => $faker->boolean,
+    ];
+});
+
+$factory->state(WebText::class, 'exposed', function () {
+    return [
+        'exposed' => true,
+    ];
+});
+
+$factory->state(WebText::class, 'unexposed', function () {
+    return [
+        'exposed' => false,
     ];
 });
 

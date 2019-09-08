@@ -30,7 +30,9 @@ class WebTextRepositoryTest extends TestCase
     protected function getValidWebTextData($web_textData = [])
     {
         return array_merge([
-            'title' => 'Title',
+            'key' => 'key',
+            'value' => 'value',
+            'exposed' => true,
         ], $web_textData);
     }
 
@@ -89,10 +91,12 @@ class WebTextRepositoryTest extends TestCase
         $web_text = factory(WebText::class)->create();
 
         $this->web_textRepository->update($web_text, $this->getValidWebTextData([
-            'title' => 'updated',
+            'key' => 'updated',
+            'value' => 'value',
+            'exposed' => true,
         ]));
 
-        $this->assertSame('updated', $web_text->fresh()->title);
+        $this->assertSame('updated', $web_text->fresh()->key);
 
         Event::assertDispatched(WebTextUpdated::class);
     }
