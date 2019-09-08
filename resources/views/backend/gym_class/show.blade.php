@@ -33,8 +33,40 @@
                             <div class="table-responsive">
                                 <table class="table table-hover">
                                     <tr>
-                                        <th>@lang('backend_gym_classes.tabs.content.overview.title')</th>
-                                        <td>{{ $gymClass->title }}</td>
+                                        <th>@lang('backend_gym_classes.tabs.content.overview.club')</th>
+                                        <td>{{ $gymClass->club->name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('backend_gym_classes.tabs.content.overview.name')</th>
+                                        <td>{{ $gymClass->name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('backend_gym_classes.tabs.content.overview.teacher')</th>
+                                        <td>{{ $gymClass->teacher }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('backend_gym_classes.tabs.content.overview.day_time')</th>
+                                        <td>{{ ['manana', 'tarde', 'noche'][$gymClass->day_time] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('backend_gym_classes.tabs.content.overview.week_days')</th>
+                                        <td>
+                                            @foreach ($gymClass->week_days as $day)
+                                                {{ $day }} @if (!$loop->last),  @endif
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('backend_gym_classes.tabs.content.overview.start_at')</th>
+                                        <td>{{ $gymClass->start_at }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('backend_gym_classes.tabs.content.overview.finish_at')</th>
+                                        <td>{{ $gymClass->finish_at }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('backend_gym_classes.tabs.content.overview.room')</th>
+                                        <td>{{ $gymClass->room }}</td>
                                     </tr>
                                 </table>
                             </div><!--table-responsive-->

@@ -37,5 +37,4 @@ class Club extends Model
     {
         return $this->hasOne(WebText::class, 'id', 'web_text_id');
     }
-
 }

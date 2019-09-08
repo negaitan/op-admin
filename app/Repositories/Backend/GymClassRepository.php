@@ -35,6 +35,7 @@ class GymClassRepository extends BaseRepository
     public function getActivePaginated($paged = 25, $orderBy = 'created_at', $sort = 'desc') : LengthAwarePaginator
     {
         return $this->model
+            ->with('club')
             ->orderBy($orderBy, $sort)
             ->paginate($paged);
     }
@@ -50,6 +51,7 @@ class GymClassRepository extends BaseRepository
     {
         return $this->model
             ->onlyTrashed()
+            ->with('club')
             ->orderBy($orderBy, $sort)
             ->paginate($paged);
     }
@@ -65,7 +67,14 @@ class GymClassRepository extends BaseRepository
     {
         return DB::transaction(function () use ($data) {
             $gym_class = parent::create([
-                'title' => $data['title'],
+                'club_id'   => $data['club_id'],
+                'name'      => $data['name'],
+                'teacher'   => $data['teacher'],
+                'day_time'  => $data['day_time'],
+                'week_days' => $data['week_days'],
+                'start_at'  => $data['start_at'],
+                'finish_at' => $data['finish_at'],
+                'room'      => $data['room'],
             ]);
 
             if ($gym_class) {
@@ -92,7 +101,14 @@ class GymClassRepository extends BaseRepository
     {
         return DB::transaction(function () use ($gym_class, $data) {
             if ($gym_class->update([
-                'title' => $data['title'],
+                'club_id'   => $data['club_id'],
+                'name'      => $data['name'],
+                'teacher'   => $data['teacher'],
+                'day_time'  => $data['day_time'],
+                'week_days' => $data['week_days'],
+                'start_at'  => $data['start_at'],
+                'finish_at' => $data['finish_at'],
+                'room'      => $data['room'],
             ])) {
                 event(new GymClassUpdated($gym_class));
 

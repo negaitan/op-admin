@@ -21,6 +21,7 @@ class GymClassTest extends TestCase
     /** @test */
     public function api_can_show_only_one_gym_class()
     {
+        $this->withoutExceptionHandling();
         $gym_class = factory(GymClass::class)->create();
 
         $response = $this->ajaxGet("/api/gym_classes/{$gym_class->id}");

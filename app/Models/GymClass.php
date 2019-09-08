@@ -25,6 +25,27 @@ class GymClass extends Model
      * @var array
      */
     protected $fillable = [
-        'title',
+        'club_id',
+        'name',
+        'teacher',
+        'day_time',
+        'week_days',
+        'start_at',
+        'finish_at',
+        'room',
     ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'week_days' => 'array',
+    ];
+
+    public function club()
+    {
+        return $this->hasOne(Club::class, 'id', 'club_id');
+    }
 }

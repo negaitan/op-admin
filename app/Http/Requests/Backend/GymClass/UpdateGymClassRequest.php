@@ -28,7 +28,13 @@ class UpdateGymClassRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'     => ['required', 'max:191'],
+            'name'      => ['required', 'max:191'],
+            'teacher'   => ['required', 'max:191'],
+            'day_time'  => ['required', 'max:191'],
+            'week_days' => ['required', 'max:191'],
+            'start_at'  => ['required', 'max:8'],
+            'finish_at' => ['required', 'max:8'],
+            'room'      => ['required', 'max:191'],
         ];
     }
 
@@ -40,8 +46,8 @@ class UpdateGymClassRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required'    => 'The :attribute field is required.',
-            'title.max'         => 'The :attribute field must have less than :max characters',
+            'name.required'    => 'The :attribute field is required.',
+            'name.max'         => 'The :attribute field must have less than :max characters',
         ];
     }
 }

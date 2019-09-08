@@ -7,6 +7,7 @@ use App\Http\Composers\GlobalComposer;
 use Illuminate\Support\ServiceProvider;
 use App\Http\Composers\Backend\SidebarComposer;
 use App\Http\Composers\Backend\WebTextComposer;
+use App\Http\Composers\Backend\GymClassComposer;
 
 /**
  * Class ComposerServiceProvider.
@@ -37,6 +38,11 @@ class ComposerServiceProvider extends ServiceProvider
             // This binds web texts that are exposed
             'backend.club.includes.form',
             WebTextComposer::class
+        );
+        View::composer(
+            // This binds web texts that are exposed
+            'backend.gym_class.includes.form',
+            GymClassComposer::class
         );
     }
 

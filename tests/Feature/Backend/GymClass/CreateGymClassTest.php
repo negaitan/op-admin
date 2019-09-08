@@ -30,7 +30,7 @@ class CreateGymClassTest extends TestCase
 
         $response = $this->post('/admin/gym_classes/store', []);
 
-        $response->assertSessionHasErrors(['title']);
+        $response->assertSessionHasErrors(['name', 'teacher', 'day_time', 'week_days', 'start_at', 'finish_at', 'room']);
     }
 
     /** @test */
@@ -43,14 +43,14 @@ class CreateGymClassTest extends TestCase
         Event::fake();
         Model::setEventDispatcher($initialDispatcher);
 
-        $response = $this->post('/admin/gym_classes/store', [
-            'title' => 'John',
-        ]);
+        $data = factory(GymClass::class)->raw(['name' => 'John']);
+
+        $response = $this->post('/admin/gym_classes/store', $data);
 
         $this->assertDatabaseHas(
             'gym_classes',
             [
-                'title' => 'John',
+                'name' => 'John',
             ]
         );
 

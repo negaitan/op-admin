@@ -16,7 +16,17 @@ class CreateGymClassesTable extends Migration
         if (!Schema::hasTable('gym_classes')) {
             Schema::create('gym_classes', function (Blueprint $table) {
                 $table->increments('id');
-                $table->text('title', 80);
+                $table->unsignedInteger('club_id')->nullable(); // textoHeader: 'TextosWeb.clubesHeader',
+                $table->foreign('club_id')
+                    ->references('id')
+                    ->on('clubs');
+                $table->string('name'); // nombre
+                $table->string('teacher'); // profesor
+                $table->string('day_time'); // [manana, tarde, noche]
+                $table->text('week_days'); // [lun, mar, mier] || diaSemana (Agregado por maru)
+                $table->time('start_at'); // horarioEntrada
+                $table->time('finish_at'); // horarioSalida
+                $table->string('room'); // salon
                 $table->softDeletes();
                 $table->timestamps();
             });

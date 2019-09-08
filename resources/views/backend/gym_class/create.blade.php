@@ -21,21 +21,8 @@
 
             <hr>
 
-            <div class="row mt-4 mb-4">
-                <div class="col">
-                    <div class="form-group row">
-                    {{ html()->label(__('backend_gym_classes.validation.attributes.title'))->class('col-md-2 form-control-label')->for('title') }}
+            @include('backend.gym_class.includes.form')
 
-                        <div class="col-md-10">
-                            {{ html()->text('title')
-                                ->class('form-control')
-                                ->placeholder(__('backend_gym_classes.validation.attributes.title'))
-                                ->attribute('maxlength', 191)
-                                ->required() }}
-                        </div><!--col-->
-                    </div><!--form-group-->
-                </div><!--col-->
-            </div><!--row-->
         </div><!--card-body-->
 
         <div class="card-footer">

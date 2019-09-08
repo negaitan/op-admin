@@ -6,9 +6,9 @@
     - [x] Club has one web text 
     - [ ] Club has many Images 
     - [ ] Club has many Amenities 
-- [ ] CRUD Gym Classes 
+- [x] CRUD Gym Classes 
+    - [x] GymClass has one club
 - [ ] CRUD Plans 
 - [ ] CRUD Class Groups 
 - [ ] CRUD Images 
 - [ ] CRUD Amenities 
-

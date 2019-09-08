@@ -2,7 +2,14 @@
 
 return [
     'table' => [
-        'title'    => 'title',
+        'club'          => 'Club',
+        'name'          => 'Name',
+        'teacher'       => 'Teacher',
+        'day_time'      => 'Day time',
+        'week_days'     => 'Week days',
+        'start_at'      => 'Start at',
+        'finish_at'     => 'Finish at',
+        'room'          => 'Room',
         'created'       => 'Created',
         'actions'       => 'Actions',
         'last_updated'  => 'Updated',
@@ -25,7 +32,14 @@ return [
         'create'        => 'Create',
         'edit'          => 'Edit',
         'view'          => 'View',
-        'title'    => 'title',
+        'club'          => 'Club',
+        'name'          => 'Name',
+        'teacher'       => 'Teacher',
+        'day_time'      => 'Day time',
+        'week_days'     => 'Week days',
+        'start_at'      => 'Start at',
+        'finish_at'     => 'Finish at',
+        'room'          => 'Room',
         'created_at'    => 'Created at',
         'last_updated'  => 'Updated at',
         'deleted'       => 'Deleted',
@@ -33,7 +47,14 @@ return [
 
     'validation' => [
         'attributes' => [
-            'title' => 'title',
+            'club'          => 'Club',
+            'name'          => 'Name',
+            'teacher'       => 'Teacher',
+            'day_time'      => 'Day time',
+            'week_days'     => 'Week days',
+            'start_at'      => 'Start at',
+            'finish_at'     => 'Finish at',
+            'room'          => 'Room',
         ]
     ],
 
@@ -42,10 +63,17 @@ return [
     ],
 
     'tabs' => [
-        'title'    => 'title',
+        'title'         => 'title',
         'content'   => [
             'overview' => [
-                'title'    => 'title',
+                'club'          => 'Club',
+                'name'          => 'Name',
+                'teacher'       => 'Teacher',
+                'day_time'      => 'Day time',
+                'week_days'     => 'Week days',
+                'start_at'      => 'Start at',
+                'finish_at'     => 'Finish at',
+                'room'          => 'Room',
                 'created_at'    => 'Created',
                 'last_updated'  => 'Updated'
             ],

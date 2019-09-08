@@ -32,11 +32,11 @@ class UpdateGymClassTest extends TestCase
 
         $this->assertNotSame('John', $gym_class->title);
 
-        $this->patch("/admin/gym_classes/{$gym_class->id}/update", [
-            'title' => 'John',
-        ]);
+        $data = factory(GymClass::class)->raw(['name' => 'John']);
 
-        $this->assertSame('John', $gym_class->fresh()->title);
+        $this->patch("/admin/gym_classes/{$gym_class->id}/update", $data);
+
+        $this->assertSame('John', $gym_class->fresh()->name);
 
         Event::assertDispatched(GymClassUpdated::class);
     }

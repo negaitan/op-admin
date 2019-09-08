@@ -29,9 +29,8 @@ class GymClassRepositoryTest extends TestCase
 
     protected function getValidGymClassData($gym_classData = [])
     {
-        return array_merge([
-            'title' => 'Title',
-        ], $gym_classData);
+        $data = factory(GymClass::class)->raw();
+        return array_merge($data, $gym_classData);
     }
 
     /** @test */
@@ -89,10 +88,16 @@ class GymClassRepositoryTest extends TestCase
         $gym_class = factory(GymClass::class)->create();
 
         $this->gym_classRepository->update($gym_class, $this->getValidGymClassData([
-            'title' => 'updated',
+            'name'      => 'updated',
+            'teacher'   => 'teacher',
+            'day_time'  => 'day_time',
+            'week_days' => 'week_days',
+            'start_at'  => 'start_at',
+            'finish_at' => 'finish_at',
+            'room'      => 'room',
         ]));
 
-        $this->assertSame('updated', $gym_class->fresh()->title);
+        $this->assertSame('updated', $gym_class->fresh()->name);
 
         Event::assertDispatched(GymClassUpdated::class);
     }
