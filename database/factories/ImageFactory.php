@@ -6,7 +6,9 @@ use App\Models\Image;
 
 $factory->define(Image::class, function (Generator $faker) {
     return [
-        'title' => $faker->word,
+        'internal_key' => $faker->unique()->word,
+        'url' => $faker->imageUrl(400,300),
+        'alt' => $faker->catchPhrase,
     ];
 });
 

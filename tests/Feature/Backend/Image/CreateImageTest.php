@@ -30,7 +30,11 @@ class CreateImageTest extends TestCase
 
         $response = $this->post('/admin/images/store', []);
 
-        $response->assertSessionHasErrors(['title']);
+        $response->assertSessionHasErrors([
+            'internal_key',
+            'url',
+            'alt'
+        ]);
     }
 
     /** @test */
@@ -43,14 +47,14 @@ class CreateImageTest extends TestCase
         Event::fake();
         Model::setEventDispatcher($initialDispatcher);
 
-        $response = $this->post('/admin/images/store', [
-            'title' => 'John',
-        ]);
+        $data = factory(Image::class)->raw(['internal_key' => 'John']);
+
+        $response = $this->post('/admin/images/store', $data);
 
         $this->assertDatabaseHas(
             'images',
             [
-                'title' => 'John',
+                'internal_key' => 'John',
             ]
         );
 

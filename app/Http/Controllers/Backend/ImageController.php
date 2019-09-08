@@ -69,7 +69,9 @@ class ImageController extends Controller
     public function store(StoreImageRequest $request)
     {
         $this->imageRepository->create($request->only(
-            'title'
+            'internal_key',
+            'url',
+            'alt'
         ));
 
         // Fire create event (ImageCreated)
@@ -118,7 +120,9 @@ class ImageController extends Controller
     public function update(UpdateImageRequest $request, Image $image)
     {
         $this->imageRepository->update($image, $request->only(
-            'title'
+            'internal_key',
+            'url',
+            'alt'
         ));
 
         // Fire update event (ImageUpdated)

@@ -2,7 +2,9 @@
 
 return [
     'table' => [
-        'title'    => 'title',
+        'internal_key'  => 'Internal key',
+        'url'           => 'Url',
+        'alt'           => 'Alt',
         'created'       => 'Created',
         'actions'       => 'Actions',
         'last_updated'  => 'Updated',
@@ -25,7 +27,9 @@ return [
         'create'        => 'Create',
         'edit'          => 'Edit',
         'view'          => 'View',
-        'title'    => 'title',
+        'internal_key'  => 'Internal key',
+        'url'           => 'Url',
+        'alt'           => 'Alt',
         'created_at'    => 'Created at',
         'last_updated'  => 'Updated at',
         'deleted'       => 'Deleted',
@@ -33,19 +37,25 @@ return [
 
     'validation' => [
         'attributes' => [
-            'title' => 'title',
+            'internal_key'  => 'Internal key',
+            'url'           => 'Url',
+            'alt'           => 'Alt',
         ]
     ],
 
     'sidebar' => [
-        'title'  => 'Title',
+        'internal_key'  => 'Internal key',
+        'url'           => 'Url',
+        'alt'           => 'Alt',
     ],
 
     'tabs' => [
         'title'    => 'title',
         'content'   => [
             'overview' => [
-                'title'    => 'title',
+                'internal_key'  => 'Internal key',
+                'url'           => 'Url',
+                'alt'           => 'Alt',
                 'created_at'    => 'Created',
                 'last_updated'  => 'Updated'
             ],

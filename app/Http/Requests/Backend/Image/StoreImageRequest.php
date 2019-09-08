@@ -28,7 +28,9 @@ class StoreImageRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'     => ['required', 'max:191'],
+            'internal_key'  => ['required', 'max:191'],
+            'url'           => ['required', 'max:191', 'url'],
+            'alt'           => ['required', 'max:191'],
         ];
     }
 
@@ -40,8 +42,8 @@ class StoreImageRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required'    => 'The :attribute field is required.',
-            'title.max'         => 'The :attribute field must have less than :max characters',
+            'internal_key.required'    => 'The :attribute field is required.',
+            'internal_key.max'         => 'The :attribute field must have less than :max characters',
         ];
     }
 }

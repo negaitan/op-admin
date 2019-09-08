@@ -16,7 +16,9 @@ class CreateImagesTable extends Migration
         if (!Schema::hasTable('images')) {
             Schema::create('images', function (Blueprint $table) {
                 $table->increments('id');
-                $table->text('title', 80);
+                $table->string('internal_key')->unique();
+                $table->string('url');
+                $table->string('alt');
                 $table->softDeletes();
                 $table->timestamps();
             });

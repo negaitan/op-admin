@@ -25,6 +25,8 @@ class Image extends Model
      * @var array
      */
     protected $fillable = [
-        'title',
+        'internal_key',
+        'url',
+        'alt',
     ];
 }

@@ -28,7 +28,9 @@ class UpdateImageRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'     => ['required', 'max:191'],
+            'internal_key'  => ['required', 'max:191'],
+            'url'           => ['required', 'max:191', 'url'],
+            'alt'           => ['required', 'max:191'],
         ];
     }
 

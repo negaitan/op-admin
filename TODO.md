@@ -23,7 +23,7 @@
         - [ ] modify Api Resource
         - [ ] modify form VIEW
         - [ ] modify formRequest
-- [ ] CRUD Images 
+- [x] CRUD Images 
 - [ ] CRUD Club-Image (RELATION) 
 - [ ] CRUD Amenities 
 - [ ] CRUD Amenity-Club (RELATION) 

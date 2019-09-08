@@ -65,7 +65,9 @@ class ImageRepository extends BaseRepository
     {
         return DB::transaction(function () use ($data) {
             $image = parent::create([
-                'title' => $data['title'],
+                'internal_key' => $data['internal_key'],
+                'url' => $data['url'],
+                'alt' => $data['alt'],
             ]);
 
             if ($image) {
@@ -92,7 +94,9 @@ class ImageRepository extends BaseRepository
     {
         return DB::transaction(function () use ($image, $data) {
             if ($image->update([
-                'title' => $data['title'],
+                'internal_key' => $data['internal_key'],
+                'url' => $data['url'],
+                'alt' => $data['alt'],
             ])) {
                 event(new ImageUpdated($image));
 

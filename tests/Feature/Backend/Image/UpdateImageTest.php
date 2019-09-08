@@ -30,13 +30,13 @@ class UpdateImageTest extends TestCase
         $image = factory(Image::class)->create();
         Event::fake();
 
-        $this->assertNotSame('John', $image->title);
+        $this->assertNotSame('John', $image->internal_key);
 
-        $this->patch("/admin/images/{$image->id}/update", [
-            'title' => 'John',
-        ]);
+        $data = factory(Image::class)->raw(['internal_key' => 'John']);
 
-        $this->assertSame('John', $image->fresh()->title);
+        $this->patch("/admin/images/{$image->id}/update", $data);
+
+        $this->assertSame('John', $image->fresh()->internal_key);
 
         Event::assertDispatched(ImageUpdated::class);
     }

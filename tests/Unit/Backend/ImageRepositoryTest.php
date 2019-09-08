@@ -29,13 +29,12 @@ class ImageRepositoryTest extends TestCase
 
     protected function getValidImageData($imageData = [])
     {
-        return array_merge([
-            'title' => 'Title',
-        ], $imageData);
+        $data = factory(Image::class)->raw();
+        return array_merge($data, $imageData);
     }
 
     /** @test */
-    public function it_can_paginate_the_active_()
+    public function it_can_paginate_the_active_image()
     {
         factory(Image::class, 30)->create();
 
@@ -51,7 +50,7 @@ class ImageRepositoryTest extends TestCase
     }
 
     /** @test */
-    public function it_can_paginate_the_soft_deleted_()
+    public function it_can_paginate_the_soft_deleted_image()
     {
         factory(Image::class, 30)->create();
         factory(Image::class, 25)->states('softDeleted')->create();
@@ -64,7 +63,7 @@ class ImageRepositoryTest extends TestCase
     }
 
     /** @test */
-    public function it_can_create_new_()
+    public function it_can_create_new_image()
     {
         $initialDispatcher = Event::getFacadeRoot();
         Event::fake();
@@ -80,7 +79,7 @@ class ImageRepositoryTest extends TestCase
     }
 
     /** @test */
-    public function it_can_update_existing_()
+    public function it_can_update_existing_image()
     {
         $initialDispatcher = Event::getFacadeRoot();
         Event::fake();
@@ -89,10 +88,10 @@ class ImageRepositoryTest extends TestCase
         $image = factory(Image::class)->create();
 
         $this->imageRepository->update($image, $this->getValidImageData([
-            'title' => 'updated',
+            'internal_key' => 'updated',
         ]));
 
-        $this->assertSame('updated', $image->fresh()->title);
+        $this->assertSame('updated', $image->fresh()->internal_key);
 
         Event::assertDispatched(ImageUpdated::class);
     }
