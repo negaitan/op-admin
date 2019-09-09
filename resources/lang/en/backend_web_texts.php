@@ -42,9 +42,7 @@ return [
     ],
 
     'sidebar' => [
-        'key'           => 'key',
-        'value'         => 'value',
-        'exposed'       => 'exposed',
+        'title'           => 'WebTexts',
     ],
 
     'tabs' => [

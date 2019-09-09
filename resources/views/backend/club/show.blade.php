@@ -57,6 +57,16 @@
                                         <td>{{ $club->longitude }}</td>
                                     </tr>
                                     <tr>
+                                        <th>@lang('backend_clubs.tabs.content.overview.amenities')</th>
+                                        <td>
+                                            <ul>
+                                                @foreach ($club->amenities as $amenity)
+                                                    <li><b>{{ $amenity->key }}:</b> {{ $amenity->value }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
                                         <th>@lang('backend_clubs.tabs.content.overview.images')</th>
                                         <td>
                                             @foreach ($club->images as $image)

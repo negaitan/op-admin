@@ -77,9 +77,8 @@ class ClubRepository extends BaseRepository
 
                 event(new ClubCreated($club));
 
-                if(count($data['images']) > 0) {
-                    $club->images()->sync($data['images']);
-                }
+                $club->images()->sync($data['images']);
+                $club->images()->sync($data['amenities']);
 
                 return $club;
             }
@@ -108,11 +107,10 @@ class ClubRepository extends BaseRepository
                 'latitude'      => $data['latitude'],
                 'longitude'     => $data['longitude'],
             ])) {
-                event(new ClubUpdated($club));
+                $club->images()->sync($data['images']);
+                $club->amenities()->sync($data['amenities']);
 
-                if(count($data['images']) > 0) {
-                    $club->images()->sync($data['images']);
-                }
+                event(new ClubUpdated($club));
 
                 return $club;
             }
@@ -136,9 +134,11 @@ class ClubRepository extends BaseRepository
         }
 
         return DB::transaction(function () use ($club) {
+            // before delete permanently unsync all images
+            $club->images()->sync([]);
+            $club->amenities()->sync([]);
+
             if ($club->forceDelete()) {
-                // before delete permanently unsync all images
-                $club->images()->sync([]);
 
                 event(new ClubPermanentlyDeleted($club));
                 return $club;

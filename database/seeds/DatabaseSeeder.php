@@ -4,6 +4,7 @@ use App\Models\WebText;
 use App\Models\Image;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Amenity;
 
 class DatabaseSeeder extends Seeder
 {
@@ -26,6 +27,7 @@ class DatabaseSeeder extends Seeder
 
         factory(WebText::class,3)->state('exposed')->create();
         factory(Image::class,2)->create();
+        factory(Amenity::class,2)->create();
 
         Model::reguard();
     }

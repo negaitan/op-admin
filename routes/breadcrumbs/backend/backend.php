@@ -15,3 +15,4 @@ require __DIR__.'/gym_class.php';
 require __DIR__.'/image.php';
 require __DIR__.'/web_text.php';
 require __DIR__.'/class_group.php';
+require __DIR__.'/amenity.php';

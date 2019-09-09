@@ -5,6 +5,7 @@ use App\Models\Club;
 use Faker\Generator;
 use App\Models\Image;
 use App\Models\WebText;
+use App\Models\Amenity;
 
 $factory->define(Club::class, function (Generator $faker) {
     return [
@@ -20,6 +21,12 @@ $factory->define(Club::class, function (Generator $faker) {
 $factory->state(Club::class, 'withImages', function () {
     return [
         'images' => factory(Image::class,2)->create()->pluck('id')->toArray(),
+    ];
+});
+
+$factory->state(Club::class, 'withAmenities', function () {
+    return [
+        'amenities' => factory(Amenity::class,2)->create()->pluck('id')->toArray(),
     ];
 });
 

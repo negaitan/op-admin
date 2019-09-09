@@ -58,17 +58,7 @@ return [
     ],
 
     'sidebar' => [
-        'name'              => 'Name',
-        'logo_image'        => 'Logo image',
-        'description'       => 'Description',
-        'cover_image'       => 'Cover image',
-        'video_url'         => 'Video url',
-        'classes'           => 'Classes',
-        'teacher_image'     => 'Teacher image',
-        'teacher_name'      => 'Teacher name',
-        'teacher_title'     => 'Teacher title',
-        'teacher_text'      => 'Teacher text',
-        'playlist_url'      => 'Playlist url',
+        'title'              => 'ClassGroups',
     ],
 
     'tabs' => [

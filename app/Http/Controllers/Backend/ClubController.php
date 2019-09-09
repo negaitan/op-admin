@@ -75,7 +75,8 @@ class ClubController extends Controller
             'opening_time',
             'latitude',
             'longitude',
-            'images'
+            'images',
+            'amenities'
         ));
 
         // Fire create event (ClubCreated)
@@ -109,6 +110,7 @@ class ClubController extends Controller
     public function edit(ManageClubRequest $request, Club $club)
     {
         $club->load('images');
+        $club->load('amenities');
         return view('backend.club.edit')->withClub($club);
     }
 
@@ -131,7 +133,8 @@ class ClubController extends Controller
             'opening_time',
             'latitude',
             'longitude',
-            'images'
+            'images',
+            'amenities'
         ));
 
         // Fire update event (ClubUpdated)

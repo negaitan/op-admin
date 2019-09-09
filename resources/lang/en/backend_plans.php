@@ -50,11 +50,7 @@ return [
     ],
 
     'sidebar' => [
-        'name'                  => 'Name',
-        'description'           => 'Description',
-        'price_month'           => 'Price month',
-        'price_matriculation'   => 'Price matriculation',
-        'price_proportional'    => 'Price proportional',
+        'title'     => 'Plans',
     ],
 
     'tabs' => [

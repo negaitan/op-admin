@@ -35,6 +35,7 @@ class UpdateClubRequest extends FormRequest
             'latitude'     => ['required', 'max:191'],
             'longitude'    => ['required', 'max:191'],
             'images'       => ['required', 'array'],
+            'amenities'    => ['required', 'array'],
         ];
     }
 

@@ -44,9 +44,7 @@ return [
     ],
 
     'sidebar' => [
-        'internal_key'  => 'Internal key',
-        'url'           => 'Url',
-        'alt'           => 'Alt',
+        'title'  => 'Images',
     ],
 
     'tabs' => [

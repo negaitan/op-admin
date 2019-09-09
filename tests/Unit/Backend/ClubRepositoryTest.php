@@ -30,12 +30,12 @@ class ClubRepositoryTest extends TestCase
 
     protected function getValidClubData($clubData = [])
     {
-        $data = factory(Club::class)->state('withImages')->raw();
+        $data = factory(Club::class)->states(['withImages','withAmenities'])->raw();
         return array_merge($data, $clubData);
     }
 
     /** @test */
-    public function it_can_paginate_the_active_()
+    public function it_can_paginate_the_active_club()
     {
         factory(Club::class, 30)->create();
 
@@ -51,7 +51,7 @@ class ClubRepositoryTest extends TestCase
     }
 
     /** @test */
-    public function it_can_paginate_the_soft_deleted_()
+    public function it_can_paginate_the_soft_deleted_club()
     {
         factory(Club::class, 30)->create();
         factory(Club::class, 25)->states('softDeleted')->create();
@@ -64,7 +64,7 @@ class ClubRepositoryTest extends TestCase
     }
 
     /** @test */
-    public function it_can_create_new_()
+    public function it_can_create_new_club()
     {
         $initialDispatcher = Event::getFacadeRoot();
         Event::fake();
@@ -81,7 +81,7 @@ class ClubRepositoryTest extends TestCase
     }
 
     /** @test */
-    public function it_can_update_existing_()
+    public function it_can_update_existing_club()
     {
         $initialDispatcher = Event::getFacadeRoot();
         Event::fake();
@@ -95,6 +95,7 @@ class ClubRepositoryTest extends TestCase
 
         $this->assertSame('updated', $club->fresh()->name);
         $this->assertCount(count($this->getValidClubData()['images']), $club->images);
+        $this->assertCount(count($this->getValidClubData()['amenities']), $club->amenities);
 
         Event::assertDispatched(ClubUpdated::class);
     }

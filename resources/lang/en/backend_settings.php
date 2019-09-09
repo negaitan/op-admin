@@ -2,9 +2,9 @@
 
 return [
     'table' => [
-        'key'           => 'key',
-        'value'         => 'value',
-        'exposed'       => 'exposed',
+        'key'           => 'Key',
+        'value'         => 'Value',
+        'exposed'       => 'Exposed',
         'created'       => 'Created',
         'actions'       => 'Actions',
         'last_updated'  => 'Updated',
@@ -35,23 +35,23 @@ return [
 
     'validation' => [
         'attributes' => [
-            'key'           => 'key',
-            'value'         => 'value',
-            'exposed'       => 'exposed',
+            'key'           => 'Key',
+            'value'         => 'Value',
+            'exposed'       => 'Exposed',
         ]
     ],
 
     'sidebar' => [
-        'title'  => 'Title',
+        'title'     => 'Settings',
     ],
 
     'tabs' => [
         'title'    => 'title',
         'content'   => [
             'overview' => [
-                'key'           => 'key',
-                'value'         => 'value',
-                'exposed'       => 'exposed',
+                'key'           => 'Key',
+                'value'         => 'Value',
+                'exposed'       => 'Exposed',
                 'created_at'    => 'Created',
                 'last_updated'  => 'Updated'
             ],

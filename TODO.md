@@ -11,7 +11,10 @@
         - [x] modify Api Resource (add array images)
         - [x] modify form VIEW (Add multiple select with images)
         - [x] modify formRequest
-    - [ ] Club belongsToMany Amenities 
+    - [x] Club belongsToMany Amenities 
+        - [x] modify Api Resource (add array images)
+        - [x] modify form VIEW (Add multiple select with images)
+        - [x] modify formRequest
 - [x] CRUD Gym Classes 
     - [x] GymClass has one club
 - [x] CRUD Plans 
@@ -31,5 +34,6 @@
         - [x] modify formRequest
 - [x] CRUD Images 
 - [x] CRUD Club-Image (RELATION) 
-- [ ] CRUD Amenities 
-- [ ] CRUD Amenity-Club (RELATION) 
+- [x] CRUD Amenities 
+- [x] CRUD Amenity-Club (RELATION) 
+- [ ] LANG: Traducir todos los srings a ES

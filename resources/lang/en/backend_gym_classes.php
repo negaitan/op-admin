@@ -59,7 +59,7 @@ return [
     ],
 
     'sidebar' => [
-        'title'  => 'Title',
+        'title'  => 'GymClasses',
     ],
 
     'tabs' => [

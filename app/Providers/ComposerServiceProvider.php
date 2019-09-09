@@ -9,6 +9,7 @@ use App\Http\Composers\Backend\SidebarComposer;
 use App\Http\Composers\Backend\WebTextComposer;
 use App\Http\Composers\Backend\GymClassComposer;
 use App\Http\Composers\Backend\ImageComposer;
+use App\Http\Composers\Backend\AmenityComposer;
 
 /**
  * Class ComposerServiceProvider.
@@ -46,9 +47,14 @@ class ComposerServiceProvider extends ServiceProvider
             GymClassComposer::class
         );
         View::composer(
-            // This binds web texts that are exposed
+            // This binds images
             ['backend.class_group.includes.form', 'backend.club.includes.form'],
             ImageComposer::class
+        );
+        View::composer(
+            // This binds amenities
+            ['backend.club.includes.form'],
+            AmenityComposer::class
         );
     }
 

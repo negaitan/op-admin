@@ -45,18 +45,13 @@ return [
             'opening_time'  => 'Opening time',
             'latitude'      => 'Latitude',
             'longitude'     => 'Longitude',
-            'images'     => 'Images',
+            'images'        => 'Images',
+            'amenities'     => 'Amenities',
         ]
     ],
 
     'sidebar' => [
-        'name'          => 'Name',
-        'web_text'      => 'Web Text',
-        'address'       => 'Address',
-        'opening_time'  => 'Opening time',
-        'latitude'      => 'Latitude',
-        'longitude'     => 'Longitude',
-        'images'     => 'Images',
+        'title'     => 'Clubs',
     ],
 
     'tabs' => [
@@ -69,7 +64,8 @@ return [
                 'opening_time'  => 'Opening time',
                 'latitude'      => 'Latitude',
                 'longitude'     => 'Longitude',
-                'images'     => 'Images',
+                'images'        => 'Images',
+                'amenities'     => 'Amenities',
                 'created_at'    => 'Created',
                 'last_updated'  => 'Updated'
             ],

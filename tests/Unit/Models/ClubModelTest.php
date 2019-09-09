@@ -7,6 +7,7 @@ use App\Models\Club;
 use App\Models\Image;
 use App\Models\WebText;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Models\Amenity;
 
 class ClubModelTest extends TestCase
 {
@@ -30,5 +31,15 @@ class ClubModelTest extends TestCase
         $club->images()->create(factory(Image::class)->raw());
 
         $this->assertInstanceOf(Image::class, $club->images->first());
+    }
+
+    /** @test */
+    public function it_can_has_many_amenities()
+    {
+        $club = factory(Club::class)->create();
+
+        $club->amenities()->create(factory(Amenity::class)->raw());
+
+        $this->assertInstanceOf(Amenity::class, $club->amenities->first());
     }
 }

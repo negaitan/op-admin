@@ -22,6 +22,7 @@ class ClubResource extends JsonResource
             'latitude'      => $this->latitude,
             'longitude'     => $this->longitude,
             'images'        => $this->images,
+            'amenities'     => $this->amenities,
         ];
     }
 }
