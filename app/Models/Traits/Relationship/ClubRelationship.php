@@ -5,6 +5,7 @@ namespace App\Models\Traits\Relationship;
 use App\Models\Image;
 use App\Models\WebText;
 use App\Models\Amenity;
+use App\Models\Plan;
 
 /**
  * Class ClubRelationship.
@@ -30,5 +31,13 @@ trait ClubRelationship
     public function amenities()
     {
         return $this->belongsToMany(Amenity::class)->withTimestamps();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function plans()
+    {
+        return $this->belongsToMany(Plan::class)->withTimestamps();
     }
 }

@@ -57,6 +57,16 @@
                                         <td>{{ $club->longitude }}</td>
                                     </tr>
                                     <tr>
+                                        <th>@lang('backend_clubs.tabs.content.overview.plans')</th>
+                                        <td>
+                                            <ul>
+                                                @foreach ($club->plans as $plan)
+                                                    <li><b>{{ $plan->name }}:</b> $ {{ $plan->price_month }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
                                         <th>@lang('backend_clubs.tabs.content.overview.amenities')</th>
                                         <td>
                                             <ul>

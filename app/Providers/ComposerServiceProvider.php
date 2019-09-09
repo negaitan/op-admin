@@ -10,6 +10,7 @@ use App\Http\Composers\Backend\WebTextComposer;
 use App\Http\Composers\Backend\GymClassComposer;
 use App\Http\Composers\Backend\ImageComposer;
 use App\Http\Composers\Backend\AmenityComposer;
+use App\Http\Composers\Backend\PlanComposer;
 
 /**
  * Class ComposerServiceProvider.
@@ -55,6 +56,11 @@ class ComposerServiceProvider extends ServiceProvider
             // This binds amenities
             ['backend.club.includes.form'],
             AmenityComposer::class
+        );
+        View::composer(
+            // This binds amenities
+            ['backend.club.includes.form'],
+            PlanComposer::class
         );
     }
 

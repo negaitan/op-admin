@@ -32,7 +32,7 @@ class UpdateClubTest extends TestCase
 
         $this->assertNotSame('John', $club->name);
 
-        $data = factory(Club::class)->state('withImages')->raw(['name' => 'John']);
+        $data = factory(Club::class)->states(['withImages', 'withAmenities', 'withPlans'])->raw(['name' => 'John']);
 
         $this->patch("/admin/clubs/{$club->id}/update", $data);
 
@@ -50,13 +50,19 @@ class UpdateClubTest extends TestCase
 
         $this->assertNotSame('John', $club->name);
 
-        $data = factory(Club::class)->state('withImages')->raw(['name' => 'John']);
+        $data = factory(Club::class)->states(['withImages', 'withAmenities', 'withPlans'])->raw(['name' => 'John']);
 
         $this->patch("/admin/clubs/{$club->id}/update", $data);
 
         $this->assertSame('John', $club->fresh()->name);
         $this->assertDatabaseHas('club_image', ['id'=>1]);
         $this->assertDatabaseHas('club_image', ['id'=>2]);
+
+        $this->assertDatabaseHas('amenity_club', ['id'=>1]);
+        $this->assertDatabaseHas('amenity_club', ['id'=>2]);
+
+        $this->assertDatabaseHas('club_plan', ['id'=>1]);
+        $this->assertDatabaseHas('club_plan', ['id'=>2]);
 
         Event::assertDispatched(ClubUpdated::class);
     }

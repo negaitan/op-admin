@@ -6,6 +6,7 @@ use Faker\Generator;
 use App\Models\Image;
 use App\Models\WebText;
 use App\Models\Amenity;
+use App\Models\Plan;
 
 $factory->define(Club::class, function (Generator $faker) {
     return [
@@ -15,6 +16,12 @@ $factory->define(Club::class, function (Generator $faker) {
         'opening_time' => $faker->sentence($nbWords = 6, $variableNbWords = true),
         'latitude'     => $faker->latitude($min = -90, $max = 90),
         'longitude'    => $faker->longitude($min = -180, $max = 180),
+    ];
+});
+
+$factory->state(Club::class, 'withPlans', function () {
+    return [
+        'plans' => factory(Plan::class,2)->create()->pluck('id')->toArray(),
     ];
 });
 

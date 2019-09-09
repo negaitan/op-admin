@@ -30,7 +30,7 @@ class ClubRepositoryTest extends TestCase
 
     protected function getValidClubData($clubData = [])
     {
-        $data = factory(Club::class)->states(['withImages','withAmenities'])->raw();
+        $data = factory(Club::class)->states(['withImages','withAmenities', 'withPlans'])->raw();
         return array_merge($data, $clubData);
     }
 
@@ -96,6 +96,7 @@ class ClubRepositoryTest extends TestCase
         $this->assertSame('updated', $club->fresh()->name);
         $this->assertCount(count($this->getValidClubData()['images']), $club->images);
         $this->assertCount(count($this->getValidClubData()['amenities']), $club->amenities);
+        $this->assertCount(count($this->getValidClubData()['plans']), $club->plans);
 
         Event::assertDispatched(ClubUpdated::class);
     }

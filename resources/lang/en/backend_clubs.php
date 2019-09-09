@@ -8,7 +8,9 @@ return [
         'opening_time'  => 'Opening time',
         'latitude'      => 'Latitude',
         'longitude'     => 'Longitude',
-        'images'     => 'Images',
+        'images'        => 'Images',
+        'amenities'     => 'Amenities',
+        'plans'         => 'Plans',
         'created'       => 'Created',
         'actions'       => 'Actions',
         'last_updated'  => 'Updated',
@@ -47,6 +49,7 @@ return [
             'longitude'     => 'Longitude',
             'images'        => 'Images',
             'amenities'     => 'Amenities',
+            'plans'         => 'Plans',
         ]
     ],
 
@@ -66,6 +69,7 @@ return [
                 'longitude'     => 'Longitude',
                 'images'        => 'Images',
                 'amenities'     => 'Amenities',
+                'plans'         => 'Plans',
                 'created_at'    => 'Created',
                 'last_updated'  => 'Updated'
             ],

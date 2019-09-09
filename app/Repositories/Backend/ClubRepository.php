@@ -75,10 +75,11 @@ class ClubRepository extends BaseRepository
 
             if ($club) {
 
-                event(new ClubCreated($club));
-
                 $club->images()->sync($data['images']);
                 $club->images()->sync($data['amenities']);
+                $club->plans()->sync($data['plans']);
+
+                event(new ClubCreated($club));
 
                 return $club;
             }
@@ -109,6 +110,7 @@ class ClubRepository extends BaseRepository
             ])) {
                 $club->images()->sync($data['images']);
                 $club->amenities()->sync($data['amenities']);
+                $club->plans()->sync($data['plans']);
 
                 event(new ClubUpdated($club));
 

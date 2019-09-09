@@ -8,6 +8,7 @@ use App\Models\Image;
 use App\Models\WebText;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\Amenity;
+use App\Models\Plan;
 
 class ClubModelTest extends TestCase
 {
@@ -41,5 +42,15 @@ class ClubModelTest extends TestCase
         $club->amenities()->create(factory(Amenity::class)->raw());
 
         $this->assertInstanceOf(Amenity::class, $club->amenities->first());
+    }
+
+    /** @test */
+    public function it_can_has_many_plans()
+    {
+        $club = factory(Club::class)->create();
+
+        $club->plans()->create(factory(Plan::class)->raw());
+
+        $this->assertInstanceOf(Plan::class, $club->plans->first());
     }
 }

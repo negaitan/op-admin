@@ -93,6 +93,29 @@
 <div class="row mt-1 mb-1">
     <div class="col">
         <div class="form-group row">
+        {{ html()->label(__('backend_clubs.validation.attributes.plans'))->class('col-md-2 form-control-label')->for('plans') }}
+
+            <div class="col-md-10">
+                @if (!isset($club))
+                    {{ html()->select('plans',$plans->pluck('name','id'))
+                        ->class('form-control')
+                        ->multiple()
+                        ->required() }}
+                @else
+                    <select class="form-control" name="plans[]" id="plans" multiple="" required="">
+                        @foreach ($plans->pluck('name','id') as $key => $item)
+                            <option value="{{ $key }}" {{ $club->plans->pluck('name')->contains($item) ? ' selected="true"' : '' }}>{{$item}}</option>
+                        @endforeach
+                    </select>
+                @endif
+            </div><!--col-->
+        </div><!--form-group-->
+    </div><!--col-->
+</div><!--row-->
+
+<div class="row mt-1 mb-1">
+    <div class="col">
+        <div class="form-group row">
         {{ html()->label(__('backend_clubs.validation.attributes.amenities'))->class('col-md-2 form-control-label')->for('amenities') }}
 
             <div class="col-md-10">

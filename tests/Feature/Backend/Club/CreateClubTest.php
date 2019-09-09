@@ -30,12 +30,13 @@ class CreateClubTest extends TestCase
 
         $response = $this->post('/admin/clubs/store', []);
 
-        $response->assertSessionHasErrors(['name', 'web_text_id', 'address', 'opening_time', 'latitude', 'longitude']);
+        $response->assertSessionHasErrors(['name', 'web_text_id', 'address', 'opening_time', 'latitude', 'longitude','images','amenities','plans']);
     }
 
     /** @test */
     public function admin_can_create_new_club()
     {
+        $this->withExceptionHandling();
         $this->loginAsAdmin();
         // Hacky workaround for this issue (https://github.com/laravel/framework/issues/18066)
         // Make sure our events are fired
@@ -43,7 +44,7 @@ class CreateClubTest extends TestCase
         Event::fake();
         Model::setEventDispatcher($initialDispatcher);
 
-        $data = factory(Club::class)->state('withImages')->raw();
+        $data = factory(Club::class)->states(['withImages', 'withAmenities', 'withPlans'])->raw();
 
         $response = $this->post('/admin/clubs/store', $data);
 
@@ -69,7 +70,7 @@ class CreateClubTest extends TestCase
         Event::fake();
         Model::setEventDispatcher($initialDispatcher);
 
-        $data = factory(Club::class)->state('withImages')->raw();
+        $data = factory(Club::class)->states(['withImages', 'withAmenities', 'withPlans'])->raw();
 
         $response = $this->post('/admin/clubs/store', $data);
 

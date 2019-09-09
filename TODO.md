@@ -18,7 +18,12 @@
 - [x] CRUD Gym Classes 
     - [x] GymClass has one club
 - [x] CRUD Plans 
-- [ ] CRUD Club-Plan (RELATION) 
+- [x] CRUD Club-Plan (RELATION) 
+    - [x] Club belongsToMany Amenities 
+        - [x] modify Repository
+        - [x] modify Api Resource (add array plans)
+        - [x] modify form VIEW (Add multiple select with plans)
+        - [x] modify formRequest
 - [x] CRUD Class Groups 
     - [x] Class Group has one logo Image 
         - [x] modify Api Resource
