@@ -26,6 +26,7 @@ class GymClass extends Model
      */
     protected $fillable = [
         'club_id',
+        'class_group_id',
         'name',
         'teacher',
         'day_time',
@@ -47,5 +48,10 @@ class GymClass extends Model
     public function club()
     {
         return $this->hasOne(Club::class, 'id', 'club_id');
+    }
+
+    public function classGroup()
+    {
+        return $this->hasOne(Club::class, 'id', 'class_group_id');
     }
 }

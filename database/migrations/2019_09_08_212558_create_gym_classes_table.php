@@ -20,6 +20,10 @@ class CreateGymClassesTable extends Migration
                 $table->foreign('club_id')
                     ->references('id')
                     ->on('clubs');
+                $table->unsignedInteger('class_group_id')->nullable(); // textoHeader: 'TextosWeb.clubesHeader',
+                $table->foreign('class_group_id')
+                    ->references('id')
+                    ->on('class_groups');
                 $table->string('name'); // nombre
                 $table->string('teacher'); // profesor
                 $table->string('day_time'); // [manana, tarde, noche]
