@@ -20,7 +20,7 @@ class CreatePlansTable extends Migration
                 $table->text('description'); // descripcion
                 $table->float('price_month'); // precioMensual
                 $table->float('price_matriculation'); // precioMatricula
-                $table->float('price_proportional'); // precioProporcional
+                $table->float('price_proportional')->default(0); // precioProporcional
                 $table->softDeletes();
                 $table->timestamps();
             });
