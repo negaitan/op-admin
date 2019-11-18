@@ -17,6 +17,7 @@ class CreateImagesTable extends Migration
             Schema::create('images', function (Blueprint $table) {
                 $table->increments('id');
                 $table->string('internal_key')->unique();
+                $table->string('image_type')->default('url');
                 $table->string('url');
                 $table->string('alt');
                 $table->softDeletes();

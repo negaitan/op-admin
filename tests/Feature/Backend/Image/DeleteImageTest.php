@@ -52,6 +52,7 @@ class DeleteImageTest extends TestCase
     public function a_image_can_be_permanently_deleted()
     {
         $this->loginAsAdmin();
+
         $image = factory(Image::class)->states('softDeleted')->create();
         Event::fake();
 
@@ -59,6 +60,7 @@ class DeleteImageTest extends TestCase
 
         $this->assertNull($image->fresh());
         $response->assertSessionHas(['flash_success' => __('alerts.backend.images.deleted_permanently')]);
+
         Event::assertDispatched(ImagePermanentlyDeleted::class);
     }
 

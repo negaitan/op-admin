@@ -28,8 +28,8 @@ class StoreImageRequest extends FormRequest
     public function rules()
     {
         return [
-            'internal_key'  => ['required', 'max:191'],
-            'url'           => ['required', 'max:191', 'url'],
+            'internal_key'  => ['required', 'max:191', 'unique:images,internal_key'],
+            // 'url'           => ['max:191', 'url'],
             'alt'           => ['required', 'max:191'],
         ];
     }

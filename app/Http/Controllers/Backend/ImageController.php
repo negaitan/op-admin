@@ -68,8 +68,17 @@ class ImageController extends Controller
      */
     public function store(StoreImageRequest $request)
     {
+        if ($request->hasFile('image')) {
+            if (config('filesystems.disks.s3.AWS_ACCESS_KEY_ID') != '' && config('filesystems.disks.s3.AWS_SECRET_ACCESS_KEY') != '') {
+                $request->url = $this->imageRepository->processImage($request);
+            } else {
+                return redirect()->back()->withFlashWarning(__('Please config your AWS S3 bucket'));
+            }
+        }
+
         $this->imageRepository->create($request->only(
             'internal_key',
+            'image_type',
             'url',
             'alt'
         ));
@@ -119,8 +128,17 @@ class ImageController extends Controller
      */
     public function update(UpdateImageRequest $request, Image $image)
     {
+        if ($request->hasFile('image')) {
+            if (config('filesystems.disks.s3.AWS_ACCESS_KEY_ID') != '' && config('filesystems.disks.s3.AWS_SECRET_ACCESS_KEY') != '') {
+                $request->url = $this->imageRepository->processImage($request);
+            } else {
+                return redirect()->back()->withFlashWarning(__('Please config your AWS S3 bucket'));
+            }
+        }
+
         $this->imageRepository->update($image, $request->only(
             'internal_key',
+            'image_type',
             'url',
             'alt'
         ));

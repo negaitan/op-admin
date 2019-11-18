@@ -28,6 +28,7 @@ class Image extends Model
      */
     protected $fillable = [
         'internal_key',
+        'image_type',
         'url',
         'alt',
     ];

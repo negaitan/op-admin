@@ -22,7 +22,7 @@
             <div class="col">
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-expanded="true"><i class="fas fa-user"></i> @lang('backend_images.tabs.title')</a>
+                        <a class="nav-link active" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-expanded="true"><i class="fas fa-image"></i></a>
                     </li>
                 </ul>
 
@@ -33,8 +33,25 @@
                             <div class="table-responsive">
                                 <table class="table table-hover">
                                     <tr>
-                                        <th>@lang('backend_images.tabs.content.overview.title')</th>
-                                        <td>{{ $image->title }}</td>
+                                        <td colspan="2">
+                                            <img src="{{ $image->url }}" alt="{{ $image->alt }}" class="img-fluid mx-auto d-block">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('Key')</th>
+                                        <td>{{ $image->internal_key }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('Image type')</th>
+                                        <td>{{ $image->image_type }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('Image url')</th>
+                                        <td>{{ $image->url }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@lang('Image alt')</th>
+                                        <td>{{ $image->alt }}</td>
                                     </tr>
                                 </table>
                             </div><!--table-responsive-->
