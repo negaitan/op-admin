@@ -9,8 +9,7 @@ $factory->define(Plan::class, function (Generator $faker) {
         'name' => $faker->word,
         'description' => $faker->catchPhrase,
         'price_month' => $faker->randomFloat($nbMaxDecimals = 2, $min = 250, $max = 1500),
-        'price_matriculation' => $faker->randomFloat($nbMaxDecimals = 2, $min = 250, $max = 1500),
-        'price_proportional' => $faker->randomFloat($nbMaxDecimals = 2, $min = 250, $max = 1500)
+        'price_matriculation' => $faker->randomFloat($nbMaxDecimals = 2, $min = 250, $max = 1500)
     ];
 });
 

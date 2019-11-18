@@ -69,8 +69,7 @@ class PlanRepository extends BaseRepository
                 'description' => $data['description'],
                 'price_month' => $data['price_month'],
                 'price_matriculation' => $data['price_matriculation'],
-                'price_proportional' => $data['price_proportional'],
-            ]);
+                ]);
 
             if ($plan) {
 
@@ -100,7 +99,6 @@ class PlanRepository extends BaseRepository
                 'description' => $data['description'],
                 'price_month' => $data['price_month'],
                 'price_matriculation' => $data['price_matriculation'],
-                'price_proportional' => $data['price_proportional'],
             ])) {
                 event(new PlanUpdated($plan));
 

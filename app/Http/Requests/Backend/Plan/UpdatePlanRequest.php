@@ -32,7 +32,6 @@ class UpdatePlanRequest extends FormRequest
             'description'           => ['required'],
             'price_month'           => ['required', 'numeric'],
             'price_matriculation'   => ['required', 'numeric'],
-            'price_proportional'    => ['required', 'numeric'],
         ];
     }
 

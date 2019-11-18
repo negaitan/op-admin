@@ -72,8 +72,7 @@ class PlanController extends Controller
             'name',
             'description',
             'price_month',
-            'price_matriculation',
-            'price_proportional'
+            'price_matriculation'
         ));
 
         // Fire create event (PlanCreated)
@@ -125,8 +124,7 @@ class PlanController extends Controller
             'name',
             'description',
             'price_month',
-            'price_matriculation',
-            'price_proportional'
+            'price_matriculation'
         ));
 
         // Fire update event (PlanUpdated)

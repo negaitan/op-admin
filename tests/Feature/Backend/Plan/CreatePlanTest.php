@@ -34,8 +34,7 @@ class CreatePlanTest extends TestCase
             'name',
             'description',
             'price_month',
-            'price_matriculation',
-            'price_proportional'
+            'price_matriculation'
         ]);
     }
 

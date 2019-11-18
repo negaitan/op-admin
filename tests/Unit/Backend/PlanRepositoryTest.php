@@ -33,8 +33,7 @@ class PlanRepositoryTest extends TestCase
             'name' => 'name',
             'description' => 'description',
             'price_month' => 10,
-            'price_matriculation' => 10,
-            'price_proportional' => 10
+            'price_matriculation' => 10
         ], $planData);
     }
 
@@ -96,8 +95,7 @@ class PlanRepositoryTest extends TestCase
             'name' => 'updated',
             'description' => 'description',
             'price_month' => 10,
-            'price_matriculation' => 10,
-            'price_proportional' => 10
+            'price_matriculation' => 10
         ]));
 
         $this->assertSame('updated', $plan->fresh()->name);

@@ -48,10 +48,6 @@
                                         <th>@lang('backend_plans.tabs.content.overview.price_matriculation')</th>
                                         <td>$ {{ $plan->price_matriculation }}</td>
                                     </tr>
-                                    <tr>
-                                        <th>@lang('backend_plans.tabs.content.overview.price_proportional')</th>
-                                        <td>$ {{ $plan->price_proportional }}</td>
-                                    </tr>
                                 </table>
                             </div><!--table-responsive-->
                         </div><!--col-->

@@ -19,7 +19,6 @@ class PlanResource extends JsonResource
             'description'           => $this->description,
             'price_month'           => $this->price_month,
             'price_matriculation'   => $this->price_matriculation,
-            'price_proportional'    => $this->price_proportional,
         ];
     }
 }

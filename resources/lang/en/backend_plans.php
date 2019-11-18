@@ -6,7 +6,6 @@ return [
         'description'           => 'Description',
         'price_month'           => 'Price month',
         'price_matriculation'   => 'Price matriculation',
-        'price_proportional'    => 'Price proportional',
         'created'       => 'Created',
         'actions'       => 'Actions',
         'last_updated'  => 'Updated',
@@ -33,7 +32,6 @@ return [
         'description'           => 'Description',
         'price_month'           => 'Price month',
         'price_matriculation'   => 'Price matriculation',
-        'price_proportional'    => 'Price proportional',
         'created_at'    => 'Created at',
         'last_updated'  => 'Updated at',
         'deleted'       => 'Deleted',
@@ -45,7 +43,6 @@ return [
             'description'           => 'Description',
             'price_month'           => 'Price month',
             'price_matriculation'   => 'Price matriculation',
-            'price_proportional'    => 'Price proportional',
         ]
     ],
 
@@ -61,7 +58,6 @@ return [
                 'description'           => 'Description',
                 'price_month'           => 'Price month',
                 'price_matriculation'   => 'Price matriculation',
-                'price_proportional'    => 'Price proportional',
                 'created_at'    => 'Created',
                 'last_updated'  => 'Updated'
             ],

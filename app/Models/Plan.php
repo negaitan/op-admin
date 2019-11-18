@@ -28,8 +28,7 @@ class Plan extends Model
         'name',
         'description',
         'price_month',
-        'price_matriculation',
-        'price_proportional'
+        'price_matriculation'
     ];
 
     /**
@@ -39,7 +38,6 @@ class Plan extends Model
      */
     protected $casts = [
         'price_month' => 'float',
-        'price_matriculation' => 'float',
-        'price_proportional' => 'float',
+        'price_matriculation' => 'float'
     ];
 }
