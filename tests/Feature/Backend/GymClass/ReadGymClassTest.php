@@ -15,7 +15,7 @@ class ReadGymClasssTest extends TestCase
     {
         $this->loginAsAdmin();
 
-        $response = $this->get('/admin/gym_classes/create');
+        $response = $this->get('/admin/gym_classes');
 
         $response->assertStatus(200);
     }

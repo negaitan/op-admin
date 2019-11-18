@@ -1,12 +1,13 @@
 <?php
 
-use App\Models\WebText;
+use App\Models\Club;
+use App\Models\Plan;
 use App\Models\Image;
+use App\Models\Amenity;
+use App\Models\WebText;
+use App\Models\GymClass;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Amenity;
-use App\Models\Plan;
-use App\Models\Club;
 
 class DatabaseSeeder extends Seeder
 {
@@ -32,6 +33,7 @@ class DatabaseSeeder extends Seeder
         factory(Image::class,2)->create();
         factory(Amenity::class,2)->create();
         factory(Plan::class,2)->create();
+        factory(GymClass::class, 20)->create();
 
         Model::reguard();
     }

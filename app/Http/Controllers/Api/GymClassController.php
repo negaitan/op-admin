@@ -17,8 +17,26 @@ class GymClassController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->ajax())
-        {
+        if($request->ajax()) {
+            if($request->has('club') || $request->has('day')) {
+                $query_keys = [
+                    'club' => 'club_id',
+                    'day' => 'club_id',
+                ];
+
+                $query = GymClass::query();
+
+                if($request->has('club')) {
+                    $query->orWhere('club_id', $request->club);
+                }
+
+                if($request->has('day')) {
+                    $query->orWhere('week_days', 'like', "%$request->day%");
+                }
+
+                return GymClassResource::collection($query->get());
+            }
+
             return GymClassResource::collection(GymClass::all());
         }
         return abort(403);
