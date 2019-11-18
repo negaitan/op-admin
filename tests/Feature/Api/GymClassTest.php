@@ -41,7 +41,6 @@ class GymClassTest extends TestCase
         factory(GymClass::class, 10)->create(['club_id' => $club->id]);
 
         $response = $this->ajaxGet('/api/gym_classes?club=' . $club->id);
-        // $response = $this->ajaxGet('/api/gym_classes?club=21&day=domingo');
 
         $this->assertCount(10, $response->decodeResponseJson()['data']);
     }
@@ -71,6 +70,24 @@ class GymClassTest extends TestCase
         $response = $this->ajaxGet("/api/gym_classes?club=$club->id&day=$expected_weekday");
 
         $this->assertCount(20, $response->decodeResponseJson()['data']);
+    }
+
+    /** @test */
+    public function it_can_show_all_gym_class_items_sorted_by_daytime()
+    {
+        factory(GymClass::class)->create(['day_time' => 0]);
+        factory(GymClass::class)->create(['day_time' => 1]);
+        factory(GymClass::class)->create(['day_time' => 2]);
+
+        $response = $this->ajaxGet("/api/gym_classes?by_daytime");
+
+        $responseData = $response->decodeResponseJson();
+
+        $this->assertCount(3, $responseData);
+
+        $this->assertCount(1, $responseData['morning']);
+        $this->assertCount(1, $responseData['evening']);
+        $this->assertCount(1, $responseData['night']);
     }
 
     /** @test */

@@ -18,13 +18,9 @@ class GymClassController extends Controller
     public function index(Request $request)
     {
         if($request->ajax()) {
-            if($request->has('club') || $request->has('day')) {
-                $query_keys = [
-                    'club' => 'club_id',
-                    'day' => 'club_id',
-                ];
+            $query = GymClass::query();
 
-                $query = GymClass::query();
+            if($request->has('club') || $request->has('day')) {
 
                 if($request->has('club')) {
                     $query->orWhere('club_id', $request->club);
@@ -34,10 +30,27 @@ class GymClassController extends Controller
                     $query->orWhere('week_days', 'like', "%$request->day%");
                 }
 
-                return GymClassResource::collection($query->get());
             }
 
-            return GymClassResource::collection(GymClass::all());
+            if($request->has('by_daytime')) {
+                $data = $query->get()->groupBy('day_time');
+
+                $response = [];
+
+                if($data->has('0')) {
+                    $response['morning'] = GymClassResource::collection($data['0']);
+                }
+                if($data->has('1')) {
+                    $response['evening'] = GymClassResource::collection($data['1']);
+                }
+                if($data->has('2')) {
+                    $response['night'] = GymClassResource::collection($data['2']);
+                }
+
+                return response()->json($response);
+            }
+
+            return GymClassResource::collection($query->get());
         }
         return abort(403);
     }
