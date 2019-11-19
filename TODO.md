@@ -73,10 +73,12 @@
 
 
 - [x] Eliminar `proportional` Plan y en los tests
-- [-] eliminar iconos innecesarios en la barra de menu superior del admin
+- [x] eliminar iconos innecesarios en la barra de menu superior del admin
+- [x] Redirect index to login
+- [x] Remove contact page
 
 
-- [-] al hacer login redirigir al admin siempre
+- [x] al hacer login redirigir al admin siempre
 - [-] en footer del admin pedir a Emi los datos para cambiar los links y el texto
 
 - [-] Pedir a Emi excel para armar el seeder de las clases

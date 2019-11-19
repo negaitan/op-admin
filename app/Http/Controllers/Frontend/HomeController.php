@@ -10,10 +10,22 @@ use App\Http\Controllers\Controller;
 class HomeController extends Controller
 {
     /**
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Routing\Redirector
      */
     public function index()
     {
-        return view('frontend.index');
+        $sessions = [];
+
+        if(session()->has('errors')) {
+            $sessions['errors'] = session()->get('errors');
+        }
+
+        if( auth()->check() ) {
+            if (auth()->user()->can('view backend')) {
+                return redirect()->route('admin.dashboard')->with($sessions);
+            }
+            return redirect()->route('frontend.user.dashboard')->with($sessions);
+        }
+        return redirect()->route('frontend.auth.login')->with($sessions);
     }
 }
