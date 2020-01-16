@@ -28,7 +28,7 @@ class UpdateGymClassRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'      => ['required', 'max:191'],
+            'class_name_id'  => ['required', 'integer', 'exists:class_names,id'],
             'teacher'   => ['required', 'max:191'],
             'day_time'  => ['required', 'max:191'],
             'week_days' => ['required', 'max:191'],

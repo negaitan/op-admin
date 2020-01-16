@@ -33,5 +33,6 @@ class Club extends Model
         'opening_time',
         'latitude',
         'longitude',
+        'amenities',
     ];
 }

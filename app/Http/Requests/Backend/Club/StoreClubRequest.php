@@ -35,7 +35,7 @@ class StoreClubRequest extends FormRequest
             'latitude'     => ['required', 'max:191'],
             'longitude'    => ['required', 'max:191'],
             'images'       => ['required', 'array'],
-            'amenities'    => ['required', 'array'],
+            'amenities'    => ['required', 'max:191'],
             'plans'        => ['required', 'array'],
         ];
     }

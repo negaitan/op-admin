@@ -67,14 +67,14 @@ class GymClassRepository extends BaseRepository
     {
         return DB::transaction(function () use ($data) {
             $gym_class = parent::create([
-                'club_id'   => $data['club_id'],
-                'name'      => $data['name'],
-                'teacher'   => $data['teacher'],
-                'day_time'  => $data['day_time'],
-                'week_days' => $data['week_days'],
-                'start_at'  => $data['start_at'],
-                'finish_at' => $data['finish_at'],
-                'room'      => $data['room'],
+                'club_id'       => $data['club_id'],
+                'class_name_id' => $data['class_name_id'],
+                'teacher'       => $data['teacher'],
+                'day_time'      => $data['day_time'],
+                'week_days'     => $data['week_days'],
+                'start_at'      => $data['start_at'],
+                'finish_at'     => $data['finish_at'],
+                'room'          => $data['room'],
             ]);
 
             if ($gym_class) {
@@ -101,14 +101,14 @@ class GymClassRepository extends BaseRepository
     {
         return DB::transaction(function () use ($gym_class, $data) {
             if ($gym_class->update([
-                'club_id'   => $data['club_id'],
-                'name'      => $data['name'],
-                'teacher'   => $data['teacher'],
-                'day_time'  => $data['day_time'],
-                'week_days' => $data['week_days'],
-                'start_at'  => $data['start_at'],
-                'finish_at' => $data['finish_at'],
-                'room'      => $data['room'],
+                'club_id'       => $data['club_id'],
+                'class_name_id' => $data['class_name_id'],
+                'teacher'       => $data['teacher'],
+                'day_time'      => $data['day_time'],
+                'week_days'     => $data['week_days'],
+                'start_at'      => $data['start_at'],
+                'finish_at'     => $data['finish_at'],
+                'room'          => $data['room'],
             ])) {
                 event(new GymClassUpdated($gym_class));
 

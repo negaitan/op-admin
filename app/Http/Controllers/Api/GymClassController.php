@@ -20,10 +20,14 @@ class GymClassController extends Controller
         if($request->ajax()) {
             $query = GymClass::query();
 
-            if($request->has('club') || $request->has('day')) {
+            if($request->has('club') || $request->has('day') || $request->has('className') ) {
 
                 if($request->has('club')) {
                     $query->orWhere('club_id', $request->club);
+                }
+
+                if($request->has('className')) {
+                    $query->orWhere('class_name_id', $request->className);
                 }
 
                 if($request->has('day')) {

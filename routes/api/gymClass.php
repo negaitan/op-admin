@@ -7,5 +7,5 @@ use App\Http\Controllers\Api\GymClassController;
  */
 
 // /api/gym_classes
-Route::get('gym_classes', [GymClassController::class, 'index'])->name('gym_classes.index');
-Route::get('gym_classes/{gym_class}', [GymClassController::class, 'show'])->name('gym_classes.show');
+Route::get('gym-classes', [GymClassController::class, 'index'])->name('gym_classes.index');
+Route::get('gym-classes/{gym_class}', [GymClassController::class, 'show'])->name('gym_classes.show');

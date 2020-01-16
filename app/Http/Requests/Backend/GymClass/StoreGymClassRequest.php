@@ -28,14 +28,14 @@ class StoreGymClassRequest extends FormRequest
     public function rules()
     {
         return [
-            'club_id'   => ['required', 'exists:clubs,id'],
-            'name'      => ['required', 'max:191'],
-            'teacher'   => ['required', 'max:191'],
-            'day_time'  => ['required', 'max:191'],
-            'week_days' => ['required', 'max:191'],
-            'start_at'  => ['required', 'max:8'],
-            'finish_at' => ['required', 'max:8'],
-            'room'      => ['required', 'max:191'],
+            'club_id'           => ['required', 'exists:clubs,id'],
+            'class_name_id'     => ['required', 'exists:classNames,id'],
+            'teacher'           => ['required', 'max:191'],
+            'day_time'          => ['required', 'max:191'],
+            'week_days'         => ['required', 'max:191'],
+            'start_at'          => ['required', 'max:8'],
+            'finish_at'         => ['required', 'max:8'],
+            'room'              => ['required', 'max:191'],
         ];
     }
 

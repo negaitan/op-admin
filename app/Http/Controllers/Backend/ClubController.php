@@ -111,7 +111,7 @@ class ClubController extends Controller
     public function edit(ManageClubRequest $request, Club $club)
     {
         $club->load('images');
-        $club->load('amenities');
+        // $club->load('amenities');
         $club->load('plans');
         return view('backend.club.edit')->withClub($club);
     }

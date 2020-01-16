@@ -71,12 +71,13 @@ class ClubRepository extends BaseRepository
                 'opening_time'  => $data['opening_time'],
                 'latitude'      => $data['latitude'],
                 'longitude'     => $data['longitude'],
+                'amenities'     => $data['amenities'],
             ]);
 
             if ($club) {
 
                 $club->images()->sync($data['images']);
-                $club->images()->sync($data['amenities']);
+                // $club->images()->sync($data['amenities']);
                 $club->plans()->sync($data['plans']);
 
                 event(new ClubCreated($club));
@@ -107,9 +108,10 @@ class ClubRepository extends BaseRepository
                 'opening_time'  => $data['opening_time'],
                 'latitude'      => $data['latitude'],
                 'longitude'     => $data['longitude'],
+                'amenities'     => $data['amenities'],
             ])) {
                 $club->images()->sync($data['images']);
-                $club->amenities()->sync($data['amenities']);
+                // $club->amenities()->sync($data['amenities']);
                 $club->plans()->sync($data['plans']);
 
                 event(new ClubUpdated($club));
@@ -138,7 +140,7 @@ class ClubRepository extends BaseRepository
         return DB::transaction(function () use ($club) {
             // before delete permanently unsync all images
             $club->images()->sync([]);
-            $club->amenities()->sync([]);
+            // $club->amenities()->sync([]);
 
             if ($club->forceDelete()) {
 

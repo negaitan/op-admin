@@ -24,7 +24,10 @@ class CreateGymClassesTable extends Migration
                 $table->foreign('class_group_id')
                     ->references('id')
                     ->on('class_groups');
-                $table->string('name'); // nombre
+                $table->unsignedInteger('class_name_id')->nullable(); // textoHeader: 'TextosWeb.clubesHeader',
+                $table->foreign('class_name_id')
+                    ->references('id')
+                    ->on('class_names');
                 $table->string('teacher'); // profesor
                 $table->string('day_time'); // [manana, tarde, noche]
                 $table->text('week_days'); // [lun, mar, mier] || diaSemana (Agregado por maru)

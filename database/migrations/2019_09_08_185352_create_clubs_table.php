@@ -28,6 +28,7 @@ class CreateClubsTable extends Migration
 				// imagenes: [ Clubes.imagenes.url ],
                 $table->string('latitude'); // latitud: 'Clubes.latitud',
                 $table->string('longitude'); // longitud: 'Clubes.longitud',
+                $table->string('amenities'); // amenities: 'Clubes.amenities',
                 $table->softDeletes();
                 $table->timestamps();
             });

@@ -7,10 +7,11 @@ use App\Http\Composers\GlobalComposer;
 use Illuminate\Support\ServiceProvider;
 use App\Http\Composers\Backend\SidebarComposer;
 use App\Http\Composers\Backend\WebTextComposer;
+use App\Http\Composers\Backend\ClassNameComposer;
 use App\Http\Composers\Backend\GymClassComposer;
 use App\Http\Composers\Backend\ImageComposer;
-use App\Http\Composers\Backend\AmenityComposer;
 use App\Http\Composers\Backend\PlanComposer;
+use App\Http\Composers\Backend\FlashComposer;
 
 /**
  * Class ComposerServiceProvider.
@@ -45,6 +46,11 @@ class ComposerServiceProvider extends ServiceProvider
         View::composer(
             // This binds web texts that are exposed
             'backend.gym_class.includes.form',
+            ClassNameComposer::class
+        );
+        View::composer(
+            // This binds web texts that are exposed
+            'backend.gym_class.includes.form',
             GymClassComposer::class
         );
         View::composer(
@@ -52,15 +58,17 @@ class ComposerServiceProvider extends ServiceProvider
             ['backend.class_group.includes.form', 'backend.club.includes.form'],
             ImageComposer::class
         );
+
         View::composer(
-            // This binds amenities
-            ['backend.club.includes.form'],
-            AmenityComposer::class
-        );
-        View::composer(
-            // This binds amenities
+            // This binds planes
             ['backend.club.includes.form'],
             PlanComposer::class
+        );
+
+        View::composer(
+            // This binds flashs
+            ['backend.club.includes.form'],
+            FlashComposer::class
         );
     }
 

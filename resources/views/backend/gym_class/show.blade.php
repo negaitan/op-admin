@@ -37,8 +37,8 @@
                                         <td>{{ $gymClass->club->name }}</td>
                                     </tr>
                                     <tr>
-                                        <th>@lang('backend_gym_classes.tabs.content.overview.name')</th>
-                                        <td>{{ $gymClass->name }}</td>
+                                        <th>@lang('backend_class_names.tabs.content.overview.key')</th>
+                                        <td>{{ $gymClass->className->key }}</td>
                                     </tr>
                                     <tr>
                                         <th>@lang('backend_gym_classes.tabs.content.overview.teacher')</th>

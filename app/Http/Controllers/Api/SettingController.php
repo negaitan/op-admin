@@ -17,10 +17,10 @@ class SettingController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->ajax())
-        {
+        // if($request->ajax())
+        // {
             return SettingResource::collection(Setting::exposed()->get());
-        }
+        // }
         return abort(403);
     }
 

@@ -69,7 +69,7 @@ class GymClassController extends Controller
     public function store(StoreGymClassRequest $request)
     {
         $this->gym_classRepository->create($request->only(
-            'club_id', 'name', 'teacher', 'day_time', 'week_days', 'start_at', 'finish_at', 'room'
+            'club_id', 'class_name_id', 'teacher', 'day_time', 'week_days', 'start_at', 'finish_at', 'room'
         ));
 
         // Fire create event (GymClassCreated)
@@ -118,7 +118,7 @@ class GymClassController extends Controller
     public function update(UpdateGymClassRequest $request, GymClass $gymClass)
     {
         $this->gym_classRepository->update($gymClass, $request->only(
-            'club_id', 'name', 'teacher', 'day_time', 'week_days', 'start_at', 'finish_at', 'room'
+            'club_id', 'class_name_id', 'teacher', 'day_time', 'week_days', 'start_at', 'finish_at', 'room'
         ));
 
         // Fire update event (GymClassUpdated)

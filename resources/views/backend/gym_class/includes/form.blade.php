@@ -17,21 +17,23 @@
     </div><!--col-->
 </div><!--row-->
 
-<div class="row mt-4 mb-4">
+
+<div class="row mt-1 mb-1">
     <div class="col">
         <div class="form-group row">
-        {{ html()->label(__('backend_gym_classes.validation.attributes.name'))->class('col-md-2 form-control-label')->for('name') }}
+        {{ html()->label(__('backend_class_names.tabs.content.overview.key'))->class('col-md-2 form-control-label')->for('class_name_id') }}
 
             <div class="col-md-10">
-                {{ html()->text('name')
+                {{ html()->select('class_name_id', $class_names->pluck('key','id'))
                     ->class('form-control')
-                    ->placeholder(__('backend_gym_classes.validation.attributes.name'))
                     ->attribute('maxlength', 191)
                     ->required() }}
             </div><!--col-->
         </div><!--form-group-->
     </div><!--col-->
 </div><!--row-->
+
+
 
 <div class="row mt-4 mb-4">
     <div class="col">

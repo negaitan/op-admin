@@ -1,7 +1,8 @@
 @php
-    $menuItems = ['amenity', 'class_group', 'club', 'gym_class', 'image', 'plan', 'setting', 'web_text'];
+    $menuItems = [ 'setting', 'web_text', 'image',  'club', 'class_group', 'class_name', 'gym_class',  'plan',  'flash'];
 @endphp
 
 @foreach ($menuItems as $item)
-    @include('backend.'.$item.'.includes.sidebar-'.Str::plural($item))
+        @include('backend.'.$item.'.includes.sidebar-'.Str::plural($item))
 @endforeach
+    

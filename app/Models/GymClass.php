@@ -6,11 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 use App\Models\Traits\Attribute\GymClassAttribute;
+use App\Models\Traits\Relationship\GymClassRelationship;
 
 class GymClass extends Model
 {
     use GymClassAttribute,
-        SoftDeletes;
+        SoftDeletes,
+        GymClassRelationship;
 
     /**
      * The attributes that should be mutated to dates.
@@ -27,7 +29,7 @@ class GymClass extends Model
     protected $fillable = [
         'club_id',
         'class_group_id',
-        'name',
+        'class_name_id',
         'teacher',
         'day_time',
         'week_days',
@@ -54,4 +56,6 @@ class GymClass extends Model
     {
         return $this->hasOne(Club::class, 'id', 'class_group_id');
     }
+
+
 }
