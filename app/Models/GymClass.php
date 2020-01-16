@@ -57,5 +57,10 @@ class GymClass extends Model
         return $this->hasOne(Club::class, 'id', 'class_group_id');
     }
 
+    public function className()
+    {
+        return $this->hasOne(ClassName::class, 'id', 'class_name_id');
+    }
+
 
 }

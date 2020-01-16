@@ -29,7 +29,7 @@ class StoreGymClassRequest extends FormRequest
     {
         return [
             'club_id'           => ['required', 'exists:clubs,id'],
-            'class_name_id'     => ['required', 'exists:classNames,id'],
+            'class_name_id'     => ['required', 'exists:class_names,id'],
             'teacher'           => ['required', 'max:191'],
             'day_time'          => ['required', 'max:191'],
             'week_days'         => ['required', 'max:191'],
