@@ -43,7 +43,7 @@ class GymClassController extends Controller
     public function index(ManageGymClassRequest $request)
     {
         return view('backend.gym_class.index')
-            ->withgymClasses($this->gym_classRepository->getActivePaginated(25, 'id', 'asc'));
+            ->withgymClasses($this->gym_classRepository->getActivePaginated(100, 'id', 'asc'));
     }
 
     /**

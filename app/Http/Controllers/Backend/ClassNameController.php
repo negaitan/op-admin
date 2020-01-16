@@ -43,7 +43,7 @@ class ClassNameController extends Controller
     public function index(ManageClassNameRequest $request)
     {
         return view('backend.class_name.index')
-            ->withclassNames($this->class_nameRepository->getActivePaginated(25, 'id', 'asc'));
+            ->withclassNames($this->class_nameRepository->getActivePaginated(100, 'id', 'asc'));
     }
 
     /**
