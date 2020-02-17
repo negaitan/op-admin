@@ -33,7 +33,7 @@ class ImageRepository extends BaseRepository
      *
      * @return mixed
      */
-    public function getActivePaginated($paged = 25, $orderBy = 'created_at', $sort = 'desc') : LengthAwarePaginator
+    public function getActivePaginated($paged = 25, $orderBy = 'created_at', $sort = 'desc'): LengthAwarePaginator
     {
         return $this->model
             ->orderBy($orderBy, $sort)
@@ -47,7 +47,7 @@ class ImageRepository extends BaseRepository
      *
      * @return LengthAwarePaginator
      */
-    public function getDeletedPaginated($paged = 25, $orderBy = 'created_at', $sort = 'desc') : LengthAwarePaginator
+    public function getDeletedPaginated($paged = 25, $orderBy = 'created_at', $sort = 'desc'): LengthAwarePaginator
     {
         return $this->model
             ->onlyTrashed()
@@ -62,7 +62,7 @@ class ImageRepository extends BaseRepository
      * @throws \Exception
      * @throws \Throwable
      */
-    public function create(array $data) : Image
+    public function create(array $data): Image
     {
         return DB::transaction(function () use ($data) {
             $image = parent::create([
@@ -92,7 +92,7 @@ class ImageRepository extends BaseRepository
      * @throws \Exception
      * @throws \Throwable
      */
-    public function update(Image $image, array $data) : Image
+    public function update(Image $image, array $data): Image
     {
         return DB::transaction(function () use ($image, $data) {
             if ($image->update([
@@ -118,7 +118,7 @@ class ImageRepository extends BaseRepository
      * @throws \Exception
      * @throws \Throwable
      */
-    public function forceDelete(Image $image) : Image
+    public function forceDelete(Image $image): Image
     {
 
         if (is_null($image->deleted_at)) {
@@ -129,7 +129,7 @@ class ImageRepository extends BaseRepository
             $fileName = explode('images/', $image->url);
             $fileName = 'images/' . end($fileName);
 
-            if(Storage::disk('s3')->exists($fileName) ) {
+            if (Storage::disk('s3')->exists($fileName)) {
                 $this->removeImage($fileName);
             }
         }
@@ -152,7 +152,7 @@ class ImageRepository extends BaseRepository
      * @return Image
      * @throws GeneralException
      */
-    public function restore(Image $image) : Image
+    public function restore(Image $image): Image
     {
         if (is_null($image->deleted_at)) {
             throw new GeneralException(__('backend_images.exceptions.cant_restore'));
@@ -191,7 +191,9 @@ class ImageRepository extends BaseRepository
     {
         Storage::disk('s3')->put($fileName, $fileContents, 'public');
 
-        return Storage::disk('s3')->url($fileName);
+        // Storage::url('file.jpg');
+        // return Storage::disk('s3')->url($fileName);
+        return Storage::url($fileName);
     }
 
     /**

@@ -29,8 +29,8 @@ class UpdateImageRequest extends FormRequest
     {
         $image_id = request()->route()->parameters['image']->id;
         return [
-            'internal_key'  => ['required', 'max:191', 'unique:images,internal_key,'.$image_id],
-            'url'           => ['max:191', 'url'],
+            'internal_key'  => ['required', 'max:191', 'unique:images,internal_key,' . $image_id],
+            // 'url'           => ['max:191', 'url'],
             'alt'           => ['required', 'max:191'],
         ];
     }

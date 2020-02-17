@@ -32,7 +32,7 @@ class GymClassRepository extends BaseRepository
      *
      * @return mixed
      */
-    public function getActivePaginated($paged = 25, $orderBy = 'created_at', $sort = 'desc') : LengthAwarePaginator
+    public function getActivePaginated($paged = 25, $orderBy = 'created_at', $sort = 'desc'): LengthAwarePaginator
     {
         return $this->model
             ->with('club')
@@ -44,10 +44,27 @@ class GymClassRepository extends BaseRepository
      * @param int    $paged
      * @param string $orderBy
      * @param string $sort
+     * @param string $clubName
+     *
+     * @return mixed
+     */
+    public function getActivePaginatedbyClub($paged = 25, $orderBy = 'created_at', $sort = 'desc', $clubName = '1'): LengthAwarePaginator
+    {
+        return $this->model
+            ->with('club')
+            ->where('club_id', $clubName, '=')
+            ->orderBy($orderBy, $sort)
+            ->paginate($paged);
+    }
+
+    /**
+     * @param int    $paged
+     * @param string $orderBy
+     * @param string $sort
      *
      * @return LengthAwarePaginator
      */
-    public function getDeletedPaginated($paged = 25, $orderBy = 'created_at', $sort = 'desc') : LengthAwarePaginator
+    public function getDeletedPaginated($paged = 25, $orderBy = 'created_at', $sort = 'desc'): LengthAwarePaginator
     {
         return $this->model
             ->onlyTrashed()
@@ -63,7 +80,7 @@ class GymClassRepository extends BaseRepository
      * @throws \Exception
      * @throws \Throwable
      */
-    public function create(array $data) : GymClass
+    public function create(array $data): GymClass
     {
         return DB::transaction(function () use ($data) {
             $gym_class = parent::create([
@@ -97,7 +114,7 @@ class GymClassRepository extends BaseRepository
      * @throws \Exception
      * @throws \Throwable
      */
-    public function update(GymClass $gym_class, array $data) : GymClass
+    public function update(GymClass $gym_class, array $data): GymClass
     {
         return DB::transaction(function () use ($gym_class, $data) {
             if ($gym_class->update([
@@ -127,7 +144,7 @@ class GymClassRepository extends BaseRepository
      * @throws \Exception
      * @throws \Throwable
      */
-    public function forceDelete(GymClass $gym_class) : GymClass
+    public function forceDelete(GymClass $gym_class): GymClass
     {
         if (is_null($gym_class->deleted_at)) {
             throw new GeneralException(__('backend_gym_classes.exceptions.delete_first'));
@@ -151,7 +168,7 @@ class GymClassRepository extends BaseRepository
      * @return GymClass
      * @throws GeneralException
      */
-    public function restore(GymClass $gym_class) : GymClass
+    public function restore(GymClass $gym_class): GymClass
     {
         if (is_null($gym_class->deleted_at)) {
             throw new GeneralException(__('backend_gym_classes.exceptions.cant_restore'));

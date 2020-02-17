@@ -46,6 +46,43 @@ class GymClassController extends Controller
             ->withgymClasses($this->gym_classRepository->getActivePaginated(100, 'id', 'asc'));
     }
 
+    public function indexRosedal(ManageGymClassRequest $request)
+    {
+        return view('backend.gym_class.index')
+            ->withgymClasses($this->gym_classRepository->getActivePaginatedbyClub(100, 'id', 'asc', '1'));
+    }
+
+    public function indexRamos(ManageGymClassRequest $request)
+    {
+        return view('backend.gym_class.index')
+            ->withgymClasses($this->gym_classRepository->getActivePaginatedbyClub(100, 'id', 'asc', 2));
+    }
+
+    public function indexSJ(ManageGymClassRequest $request)
+    {
+        return view('backend.gym_class.index')
+            ->withgymClasses($this->gym_classRepository->getActivePaginatedbyClub(100, 'id', 'asc', 3));
+    }
+
+    public function indexSJS(ManageGymClassRequest $request)
+    {
+        return view('backend.gym_class.index')
+            ->withgymClasses($this->gym_classRepository->getActivePaginatedbyClub(100, 'id', 'asc', 4));
+    }
+
+    public function indexNatR(ManageGymClassRequest $request)
+    {
+        return view('backend.gym_class.index')
+            ->withgymClasses($this->gym_classRepository->getActivePaginatedbyClub(100, 'id', 'asc', 5));
+    }
+
+
+    public function indexNatSJ(ManageGymClassRequest $request)
+    {
+        return view('backend.gym_class.index')
+            ->withgymClasses($this->gym_classRepository->getActivePaginatedbyClub(100, 'id', 'asc', 5));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -69,7 +106,14 @@ class GymClassController extends Controller
     public function store(StoreGymClassRequest $request)
     {
         $this->gym_classRepository->create($request->only(
-            'club_id', 'class_name_id', 'teacher', 'day_time', 'week_days', 'start_at', 'finish_at', 'room'
+            'club_id',
+            'class_name_id',
+            'teacher',
+            'day_time',
+            'week_days',
+            'start_at',
+            'finish_at',
+            'room'
         ));
 
         // Fire create event (GymClassCreated)
@@ -118,7 +162,14 @@ class GymClassController extends Controller
     public function update(UpdateGymClassRequest $request, GymClass $gymClass)
     {
         $this->gym_classRepository->update($gymClass, $request->only(
-            'club_id', 'class_name_id', 'teacher', 'day_time', 'week_days', 'start_at', 'finish_at', 'room'
+            'club_id',
+            'class_name_id',
+            'teacher',
+            'day_time',
+            'week_days',
+            'start_at',
+            'finish_at',
+            'room'
         ));
 
         // Fire update event (GymClassUpdated)

@@ -81,9 +81,15 @@ return [
     ],
 
     'menus' => [
-      'main' => 'GymClass',
-      'all' => 'All',
-      'create' => 'Create',
-      'deleted' => 'Deleted'
+        'main' => 'GymClass',
+        'all' => 'All',
+        'rosedal' => 'Rosedal',
+        'sanJusto' => 'San Justo',
+        'sjs' => 'San Justo Shopping',
+        'ramos' => 'Ramos',
+        'natRamos' => 'Natación Ramos',
+        'natSj' => 'Natación San Justo',
+        'create' => 'Create',
+        'deleted' => 'Deleted'
     ]
 ];

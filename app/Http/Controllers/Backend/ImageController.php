@@ -69,11 +69,7 @@ class ImageController extends Controller
     public function store(StoreImageRequest $request)
     {
         if ($request->hasFile('image')) {
-            if (config('filesystems.disks.s3.AWS_ACCESS_KEY_ID') != '' && config('filesystems.disks.s3.AWS_SECRET_ACCESS_KEY') != '') {
-                $request->url = $this->imageRepository->processImage($request);
-            } else {
-                return redirect()->back()->withFlashWarning(__('Please config your AWS S3 bucket'));
-            }
+            $request['url'] = $this->imageRepository->processImage($request);
         }
 
         $this->imageRepository->create($request->only(
