@@ -17,46 +17,43 @@ class GymClassController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->ajax()) {
-            $query = GymClass::query();
 
-            if($request->has('club') || $request->has('day') || $request->has('className') ) {
+        $query = GymClass::query();
 
-                if($request->has('club')) {
-                    $query->orWhere('club_id', $request->club);
-                }
+        if ($request->has('club') || $request->has('day') || $request->has('className')) {
 
-                if($request->has('className')) {
-                    $query->orWhere('class_name_id', $request->className);
-                }
-
-                if($request->has('day')) {
-                    $query->orWhere('week_days', 'like', "%$request->day%");
-                }
-
+            if ($request->has('club')) {
+                $query->orWhere('club_id', $request->club);
             }
 
-            if($request->has('by_daytime')) {
-                $data = $query->get()->groupBy('day_time');
-
-                $response = [];
-
-                if($data->has('0')) {
-                    $response['morning'] = GymClassResource::collection($data['0']);
-                }
-                if($data->has('1')) {
-                    $response['evening'] = GymClassResource::collection($data['1']);
-                }
-                if($data->has('2')) {
-                    $response['night'] = GymClassResource::collection($data['2']);
-                }
-
-                return response()->json($response);
+            if ($request->has('className')) {
+                $query->orWhere('class_name_id', $request->className);
             }
 
-            return GymClassResource::collection($query->get());
+            if ($request->has('day')) {
+                $query->orWhere('week_days', 'like', "%$request->day%");
+            }
         }
-        return abort(403);
+
+        if ($request->has('by_daytime')) {
+            $data = $query->get()->groupBy('day_time');
+
+            $response = [];
+
+            if ($data->has('0')) {
+                $response['morning'] = GymClassResource::collection($data['0']);
+            }
+            if ($data->has('1')) {
+                $response['evening'] = GymClassResource::collection($data['1']);
+            }
+            if ($data->has('2')) {
+                $response['night'] = GymClassResource::collection($data['2']);
+            }
+
+            return response()->json($response);
+        }
+
+        return GymClassResource::collection($query->get());
     }
 
     /**
@@ -68,10 +65,6 @@ class GymClassController extends Controller
      */
     public function show(Request $request, GymClass $gymClass)
     {
-        if($request->ajax())
-        {
-            return new GymClassResource($gymClass);
-        }
-        return abort(403);
+        return new GymClassResource($gymClass);
     }
 }

@@ -12,6 +12,7 @@ use App\Events\Backend\Image\ImagePermanentlyDeleted;
 use App\Events\Backend\Image\ImageRestored;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Storage;
+use Log;
 
 /**
  * Class ImageRepository.
@@ -169,9 +170,12 @@ class ImageRepository extends BaseRepository
 
     public function processImage($request)
     {
+        \Log::info('store in validate img : ' . $request->url);
         $this->validate($request, [
-            'image' => 'required|image|max:2048'
+            'image' => 'required|image|max:4096'
         ]);
+
+        \Log::info('store out validate : ' . $request->url);
 
         $file = $request->file('image');
         $name = $file->getClientOriginalName();
@@ -185,14 +189,18 @@ class ImageRepository extends BaseRepository
      *
      * @param $fileName
      * @param $fileContents
-     * @return void
+     * @return string
      */
     public function uploadImage($fileName, $fileContents)
     {
-        Storage::disk('s3')->put($fileName, $fileContents, 'public');
+        if (Storage::disk('s3')->put($fileName, $fileContents, 'public')) {
+            \Log::info('Url before upload image : ' . Storage::url($fileName));
+            return Storage::url($fileName);
+        }
 
         // Storage::url('file.jpg');
         // return Storage::disk('s3')->url($fileName);
+        \Log::info('store after upload : ' . Storage::url($fileName));
         return Storage::url($fileName);
     }
 

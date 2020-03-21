@@ -17,8 +17,7 @@ class ClassNameController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->ajax())
-        {
+        if ($request->ajax()) {
             return ClassNameResource::collection(ClassName::exposed()->get());
         }
         return abort(403);
@@ -33,8 +32,7 @@ class ClassNameController extends Controller
      */
     public function show(Request $request, ClassName $className)
     {
-        if($request->ajax())
-        {
+        if ($request->ajax()) {
             return new ClassNameResource($className);
         }
         return abort(403);

@@ -17,11 +17,7 @@ class WebTextController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->ajax())
-        {
-            return WebTextResource::collection(WebText::exposed()->get());
-        }
-        return abort(403);
+        return WebTextResource::collection(WebText::exposed()->get());
     }
 
     /**
@@ -33,10 +29,7 @@ class WebTextController extends Controller
      */
     public function show(Request $request, WebText $webText)
     {
-        if($request->ajax())
-        {
-            return new WebTextResource($webText);
-        }
-        return abort(403);
+
+        return new WebTextResource($webText);
     }
 }

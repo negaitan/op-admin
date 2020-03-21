@@ -17,11 +17,7 @@ class FlashController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->ajax())
-        {
-            return FlashResource::collection(Flash::all());
-        }
-        return abort(403);
+        return FlashResource::collection(Flash::all());
     }
 
     /**
@@ -33,10 +29,6 @@ class FlashController extends Controller
      */
     public function show(Request $request, Flash $flash)
     {
-        if($request->ajax())
-        {
-            return new FlashResource($flash);
-        }
-        return abort(403);
+        return new FlashResource($flash);
     }
 }

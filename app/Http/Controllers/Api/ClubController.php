@@ -17,11 +17,8 @@ class ClubController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->ajax())
-        {
-            return ClubResource::collection(Club::all());
-        }
-        return abort(403);
+
+        return ClubResource::collection(Club::all());
     }
 
     /**
@@ -33,10 +30,7 @@ class ClubController extends Controller
      */
     public function show(Request $request, Club $club)
     {
-        if($request->ajax())
-        {
-            return new ClubResource($club);
-        }
-        return abort(403);
+
+        return new ClubResource($club);
     }
 }

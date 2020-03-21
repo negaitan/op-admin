@@ -17,11 +17,8 @@ class ClassGroupController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->ajax())
-        {
-            return ClassGroupResource::collection(ClassGroup::all());
-        }
-        return abort(403);
+
+        return ClassGroupResource::collection(ClassGroup::all());
     }
 
     /**
@@ -33,10 +30,7 @@ class ClassGroupController extends Controller
      */
     public function show(Request $request, ClassGroup $classGroup)
     {
-        if($request->ajax())
-        {
-            return new ClassGroupResource($classGroup);
-        }
-        return abort(403);
+
+        return new ClassGroupResource($classGroup);
     }
 }

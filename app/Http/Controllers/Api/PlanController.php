@@ -17,11 +17,8 @@ class PlanController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->ajax())
-        {
-            return PlanResource::collection(Plan::all());
-        }
-        return abort(403);
+
+        return PlanResource::collection(Plan::all());
     }
 
     /**
@@ -33,10 +30,7 @@ class PlanController extends Controller
      */
     public function show(Request $request, Plan $plan)
     {
-        if($request->ajax())
-        {
-            return new PlanResource($plan);
-        }
-        return abort(403);
+
+        return new PlanResource($plan);
     }
 }

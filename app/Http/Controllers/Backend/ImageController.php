@@ -68,9 +68,15 @@ class ImageController extends Controller
      */
     public function store(StoreImageRequest $request)
     {
+        \Log::info('IMAGEN ¿ : ' . var_export($request->hasFile('image'), true));
+
+        print_r($request->all());
+
         if ($request->hasFile('image')) {
             $request['url'] = $this->imageRepository->processImage($request);
         }
+        \Log::info('store url after procces : ' . $request->url);
+        \Log::info('store url after procces : ' . $request['url']);
 
         $this->imageRepository->create($request->only(
             'internal_key',
